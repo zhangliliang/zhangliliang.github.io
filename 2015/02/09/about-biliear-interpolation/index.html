@@ -1,0 +1,1119 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv=”Cache-Control” content=”no-transform” />
+<meta http-equiv=”Cache-Control” content=”no-siteapp” />
+
+
+  <meta name="keywords" content=" ,Image Processing, " />
+
+
+
+    <meta name="description" content="关于双线性插值,讨论双线性插值的原理和实现细节 On My Way to Be a Good R&D Engineer" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+
+  <link rel="alternate" href="/atom.xml" title="在路上" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+  <title> 关于双线性插值 - 在路上 </title>
+</head>
+
+<body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://static.ixirong.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+
+    <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+
+
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">在路上</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    <div class="c-search-form-div" style="display:none;">
+      
+      
+    </div>
+    <script type="text/javascript">
+      if(isDesktop() || isTablet()){        
+        $('.c-search-form-div').css("display","inline");
+      }    
+    </script>
+
+    
+      
+      
+        <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+      
+    
+
+    <script type="text/javascript">
+      if(!isMobile()){
+         $('.menu-item-commonweal').css("display","");
+      }
+    </script>
+
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              关于双线性插值
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-02-09
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/02/09/about-biliear-interpolation/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/09/about-biliear-interpolation/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>最近工作涉及到了插值算法，查了一下发现原来这东西如果抠细节的话并不简单，于是记录一下。这篇先记录的是双线性插值。</p>
+<h2 id="应用场景和基本原理">应用场景和基本原理</h2><p>简单来说就是，在对图像进行缩放的时候，对于未知像素可以采用插值进行求解。<a href="http://www.cambridgeincolour.com/tutorials/image-interpolation.htm" target="_blank" rel="external">这篇文章</a>写的比较清楚，这里就不再重复了。<br>双线性插值的原理可以描述为，将output image的点映射回input image的坐标系（映射回去的坐标可能为小数），并找出最近的四个在input image中像素点（它们的坐标一定为整数），然后加权平均得到它的像素值。看图的话会比较清晰：<br><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Bilinear_interpolation_visualisation.svg/220px-Bilinear_interpolation_visualisation.svg.png" alt=""><br>乍一看这个算法很直观，也无需专门写一篇文章来记录。但是这个直观的算法在实现的时候有一点是值得注意的，就是将output映射为input坐标系时候具体要怎么<strong>映射</strong>。查了一些文章，也有各种的实现方法，比如：</p>
+<blockquote>
+<ol>
+<li><a href="http://tech-algorithm.com/articles/bilinear-image-scaling/" target="_blank" rel="external">http://tech-algorithm.com/articles/bilinear-image-scaling/</a></li>
+<li><a href="http://stackoverflow.com/questions/26142288/resize-an-image-with-bilinear-interpolation-without-imresize" target="_blank" rel="external">http://stackoverflow.com/questions/26142288/resize-an-image-with-bilinear-interpolation-without-imresize</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_ab584cac0101h0xy.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_ab584cac0101h0xy.html</a></li>
+</ol>
+</blockquote>
+<p>感觉它们的实现方法并不一致，也不知道谁的实现方法比较靠谱。所以笔者决定看matlab的<code>imresize</code>是怎么实现的。</p>
+<h2 id="在matlab中的实现">在matlab中的实现</h2><p>在matlab中输入：<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">%</span> 生成一张简单的图片，并用双线性插值法放大到<span class="number">2</span>倍</span><br><span class="line">im = ui<span class="label">nt8</span><span class="comment">([8 16;16 32])</span>;</span><br><span class="line">imresize<span class="comment">(im, 2, 'bilinear')</span></span><br></pre></td></tr></table></figure></p>
+<p>返回结果会是：<br><figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ans </span>=<span class="string"></span><br><span class="line"></span><br><span class="line">    8   10   14   16</span><br><span class="line">   10   13   18   20</span><br><span class="line">   14   18   25   28</span><br><span class="line">   16   20   28   32</span></span><br></pre></td></tr></table></figure></p>
+<p>现在分析这个结果是怎么得到的。所幸matlab是可以通过ctrl+D找到部分的源码实现方法的，于是笔者大致读了一下，结合网上一些资料终于把如何映射这个问题给解决了。<br>最主要的函数是imresize.m中的这个函数：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[weights, indices]</span> = <span class="title">contributions</span><span class="params">(in_length, out_length, ...</span><br><span class="line">                                            scale, kernel, ...</span><br><span class="line">                                            kernel_width, antialiasing)</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (scale &lt; <span class="number">1</span>) &amp;&amp; (antialiasing)</span><br><span class="line">    <span class="comment">% Use a modified kernel to simultaneously interpolate and</span></span><br><span class="line">    <span class="comment">% antialias.</span></span><br><span class="line">    h = @(x) scale * kernel(scale * x);</span><br><span class="line">    kernel_width = kernel_width / scale;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">% No antialiasing; use unmodified kernel.</span></span><br><span class="line">    h = kernel;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Output-space coordinates.</span></span><br><span class="line">x = (<span class="number">1</span>:out_length)<span class="operator">'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Input-space coordinates. Calculate the inverse mapping such that 0.5</span></span><br><span class="line"><span class="comment">% in output space maps to 0.5 in input space, and 0.5+scale in output</span></span><br><span class="line"><span class="comment">% space maps to 1.5 in input space.</span></span><br><span class="line">u = x/scale + <span class="number">0.5</span> * (<span class="number">1</span> - <span class="number">1</span>/scale);</span><br><span class="line"></span><br><span class="line"><span class="comment">% What is the left-most pixel that can be involved in the computation?</span></span><br><span class="line">left = <span class="built_in">floor</span>(u - kernel_width/<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% What is the maximum number of pixels that can be involved in the</span></span><br><span class="line"><span class="comment">% computation?  Note: it's OK to use an extra pixel here; if the</span></span><br><span class="line"><span class="comment">% corresponding weights are all zero, it will be eliminated at the end</span></span><br><span class="line"><span class="comment">% of this function.</span></span><br><span class="line">P = <span class="built_in">ceil</span>(kernel_width) + <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">% The indices of the input pixels involved in computing the k-th output</span></span><br><span class="line"><span class="comment">% pixel are in row k of the indices matrix.</span></span><br><span class="line">indices = <span class="built_in">bsxfun</span>(@plus, left, <span class="number">0</span>:P-<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% The weights used to compute the k-th output pixel are in row k of the</span></span><br><span class="line"><span class="comment">% weights matrix.</span></span><br><span class="line">weights = h(<span class="built_in">bsxfun</span>(@minus, u, indices));</span><br><span class="line"></span><br><span class="line"><span class="comment">% Normalize the weights matrix so that each row sums to 1.</span></span><br><span class="line">weights = <span class="built_in">bsxfun</span>(@rdivide, weights, sum(weights, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">% Clamp out-of-range indices; has the effect of replicating end-points.</span></span><br><span class="line">indices = min(max(<span class="number">1</span>, indices), in_length);</span><br><span class="line"></span><br><span class="line"><span class="comment">% If a column in weights is all zero, get rid of it.</span></span><br><span class="line">kill = <span class="built_in">find</span>(~any(weights, <span class="number">1</span>));</span><br><span class="line"><span class="keyword">if</span> ~<span class="built_in">isempty</span>(kill)</span><br><span class="line">    weights(:,kill) = <span class="matrix">[]</span>;</span><br><span class="line">    indices(:,kill) = <span class="matrix">[]</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p>matlab的注释写得很清楚了，output的坐标用x变量表示，对应映射回input的坐标用u表示，当x=0.5时候，u也应该为0.5;当x=0.5+scale时，u为1.5。这样会得到怎么的映射效果呢，笔者画了一幅示意图：<br><img src="http://hexo-pic-zhangliliang.qiniudn.com/drawing.png" alt=""><br>这里的坐标系是matlab下的坐标系（左上角为原点，从1开始计数），其中红色的4个点表示input的四个点，灰色的16个点是output的点映射回到input坐标系下的坐标。图片下方有两行x和u分别是灰色点在output和input下的x方向上的坐标值。<br>所以根据上面的映射方法，得到output映射回input的图像特点有两个：</p>
+<ol>
+<li>图片的中心是重合的（图中央的黑点为中心）</li>
+<li>output中的相邻像素的距离为input相邻像素的距离的1/scale</li>
+</ol>
+<p>另外，代码中计算weight时候用到的h函数，在bilinear中是长这个样子的（下图的左边部分，图片来自<a href="http://stackoverflow.com/questions/26823140/imresize-trying-to-understand-the-bicubic-interpolation" target="_blank" rel="external">这里</a>）：<br><img src="http://i.stack.imgur.com/JJ6ll.png" alt=""><br>即一个等腰三角形，代表的意思是距离某个参考点距离为1的时候，权重递减，超过1就没有权重了。</p>
+<p>有了上面的铺垫，要计算灰色的像素值就简单了，举几个例子。<br>对于第一行第一个灰色点，坐标是(0.75，0.75)，(0.75±1，0.75±1)范围的点只有左上角的红点，于是它的值就取该红点的像素值。<br>对于第二行第一个灰色点，坐标是(0.75, 1.25)，(0.75±1, 1.25±1)范围的点有两个，即左上和左下的红点，所以根据距离权重计算为左上的点较近占3/4，左下的点距离较远占1/4，那么最后像素的值就是8x3/4+16x1/4=10<br>对于第二行第二个灰色点，坐标是(1.25, 1.25), (1.25±1, 1.25±1)范围的点包括了全部四个红点，于是也是根据距离来计算权值，归一化话，左上右上左下右下的点的权值分别为(27,9,9,3)/48，根据这个权重进行加权，结果为(8x27+16x9x2+32x3)/48=12.5，四舍五入取13。</p>
+<p>对应上述matlab的结果，说明这样进行理解应该是没有问题的了。</p>
+<p>参考页面：</p>
+<ol>
+<li><a href="http://stackoverflow.com/questions/26142288/resize-an-image-with-bilinear-interpolation-without-imresize" target="_blank" rel="external">http://stackoverflow.com/questions/26142288/resize-an-image-with-bilinear-interpolation-without-imresize</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_ab584cac0101h0xy.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_ab584cac0101h0xy.html</a></li>
+<li><a href="http://www.cnblogs.com/linzhao/archive/2012/02/16/2354175.html" target="_blank" rel="external">http://www.cnblogs.com/linzhao/archive/2012/02/16/2354175.html</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Bilinear_interpolation" target="_blank" rel="external">http://en.wikipedia.org/wiki/Bilinear_interpolation</a></li>
+<li><a href="http://tech-algorithm.com/articles/linear-interpolation/" target="_blank" rel="external">http://tech-algorithm.com/articles/linear-interpolation/</a></li>
+<li><a href="http://tech-algorithm.com/articles/bilinear-image-scaling/" target="_blank" rel="external">http://tech-algorithm.com/articles/bilinear-image-scaling/</a></li>
+<li><a href="http://stackoverflow.com/questions/8808996/bilinear-interpolation-to-enlarge-bitmap-images" target="_blank" rel="external">http://stackoverflow.com/questions/8808996/bilinear-interpolation-to-enlarge-bitmap-images</a></li>
+<li><a href="http://stackoverflow.com/questions/26823140/imresize-trying-to-understand-the-bicubic-interpolation" target="_blank" rel="external">http://stackoverflow.com/questions/26823140/imresize-trying-to-understand-the-bicubic-interpolation</a></li>
+</ol>
+
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+
+    <div class ="post-donate">
+      <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+           &uarr;<br>
+           
+            如果内容对您有帮助，不妨支持一下:)
+           
+        </span>
+        <br>
+      </div>
+
+      <div id="donate_guide" class="donate_bar center hidden">
+        
+          <a href="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" class="fancybox" rel="article0"       style="float:left;margin-left:25%;margin-right:2px;">
+          <img src="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" height="164px" width="164px">
+          </a>
+        
+
+      
+       <a href="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0">
+         <img src="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" height="164px" width="164px">
+       </a>
+      
+
+      </div>
+
+      <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function(){
+          $('#donate_board').addClass('hidden');
+          $('#donate_guide').removeClass('hidden');
+        }
+      </script>
+    </div>
+
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Image-Processing/"> #Image Processing </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/02/11/about-convolution/">关于卷积</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/02/01/about-sparse-coding/">关于Sparse Coding</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+
+<div class="ds-share" data-thread-key="2015/02/09/about-biliear-interpolation/" data-title="关于双线性插值" data-images="http://zhangliliang.com/2015/02/09/about-biliear-interpolation/" data-content="http://zhangliliang.com/2015/02/09/about-biliear-interpolation/" data-url="http://zhangliliang.com/2015/02/09/about-biliear-interpolation/">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+
+          <!-- 评论框 -->
+          <div class="ds-thread" data-thread-key="2015/02/09/about-biliear-interpolation/"
+               data-title="关于双线性插值" data-url="http://zhangliliang.com/2015/02/09/about-biliear-interpolation/">
+          </div>
+        
+      </div>
+    
+  </div>
+  
+  <div style="position:relitive;float:bottom" >由于前段时间很忙，很久没有更新网站。发现多了不少评论和问题，无法一一回复。如果现在仍有问题请再次留言 :) 2016.03.29</div>
+
+
+
+          
+
+          
+        </div>
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zhang Liliang" />
+          <p class="site-author-name">Zhang Liliang</p>
+        </div>
+        <p class="site-description motion-element">On My Way to Be a Good R&D Engineer</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/zhangliliang" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/level0" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/level0" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+		
+		<div class="cc-license motion-element">
+          <a href="http://www.clustrmaps.com/map/zhangliliang.com" title="Visitor Map for zhangliliang.com"><img src="//www.clustrmaps.com/map_v2.png?u=O4it&d=oZmhivNx4M8eu2PLaeuWOb50HASEPiXS6Tih7mocqkY" /></a>
+        </div>
+		
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景和基本原理"><span class="nav-number">1.</span> <span class="nav-text">应用场景和基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在matlab中的实现"><span class="nav-number">2.</span> <span class="nav-text">在matlab中的实现</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2016
+  
+  <span class="author"> Zhang Liliang</span>
+</div>
+
+<div class="powered-by">
+  <div style="float:left;margin-top:7px;margin-right:10px;">
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254711542'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254711542%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+   鲁ICP备15013969号
+</div>
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Clone theme 
+  <a class="theme-link" href="https://github.com/xirong/hexo-theme-next" rel="external nofollow">
+    NexT
+  </a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <!-- <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script> -->
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <!-- <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+ -->
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebarToggleMotion();
+    postsListMotion();
+    backToTopMotion();    
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+//search animate
+$(function(){
+   $('#ts-search-input').focus(function() {  //设置获得焦点时的方法，让文本框变长
+    $(this).animate({width: "150"}, 300 );  
+    $(this).val(''); //用于清空内容，可选操作
+   });
+ 
+   $('#ts-search-input').blur(function() {  //设置失去焦点时的方法，让文本框变短
+    $(this).animate({width: "70"}, 300 );
+   });
+});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebarToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+
+
+
+   <script type="text/javascript">
+    var HEXO_SIDEBAR_CONFIGURATION = 'post';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangliliang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4dd9fbea330c98acc0ff7b6538270f3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  
+</body>
+</html>

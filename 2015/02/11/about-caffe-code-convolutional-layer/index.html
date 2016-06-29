@@ -1,0 +1,1138 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv=”Cache-Control” content=”no-transform” />
+<meta http-equiv=”Cache-Control” content=”no-siteapp” />
+
+
+  <meta name="keywords" content=" ,CNN,tools, " />
+
+
+
+    <meta name="description" content="Caffe源码阅读（2） 卷积层,记录Caffe源码阅读过程的笔记，这篇是关于卷积层的 On My Way to Be a Good R&D Engineer" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+
+  <link rel="alternate" href="/atom.xml" title="在路上" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+  <title> Caffe源码阅读（2） 卷积层 - 在路上 </title>
+</head>
+
+<body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://static.ixirong.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+
+    <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+
+
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">在路上</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    <div class="c-search-form-div" style="display:none;">
+      
+      
+    </div>
+    <script type="text/javascript">
+      if(isDesktop() || isTablet()){        
+        $('.c-search-form-div').css("display","inline");
+      }    
+    </script>
+
+    
+      
+      
+        <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+      
+    
+
+    <script type="text/javascript">
+      if(!isMobile()){
+         $('.menu-item-commonweal').css("display","");
+      }
+    </script>
+
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Caffe源码阅读（2） 卷积层
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-02-11
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/02/11/about-caffe-code-convolutional-layer/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/11/about-caffe-code-convolutional-layer/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>大约半年前写过一篇关于Caffe全连接层的<a href="/2014/09/15/about-caffe-code-full-connected-layer/">文章</a>，这次更新卷积层的。</p>
+<p>一开始笔者先看了卷积层的梯度传导公式，参考了这两篇：</p>
+<blockquote>
+<ol>
+<li><a href="http://ufldl.stanford.edu/tutorial/supervised/ConvolutionalNeuralNetwork/" target="_blank" rel="external">http://ufldl.stanford.edu/tutorial/supervised/ConvolutionalNeuralNetwork/</a></li>
+<li><a href="http://cogprints.org/5869/1/cnn_tutorial.pdf" target="_blank" rel="external">http://cogprints.org/5869/1/cnn_tutorial.pdf</a></li>
+</ol>
+</blockquote>
+<p>卷积层的参数的梯度可以这样来求：<br><span>$$\begin{align}
+  \nabla_{W_k^{(l)}} J(W,b;x,y) &= \sum_{i=1}^m (a_i^{(l)}) \ast \text{rot90}(\delta_k^{(l+1)},2), \\
+  \nabla_{b_k^{(l)}} J(W,b;x,y) &=  \sum_{a,b} (\delta_k^{(l+1)})_{a,b}.
+\end{align}$$</span><!-- Has MathJax --><br>看上去比全连接层复杂多了，但其实，<strong>他们本质上基本是一样的</strong>，依然可以套回全连接层的参数求导公式：<br><span>$$\begin{align}
+   \nabla_{W^{(l)}} J(W,b;x,y) &= \delta^{(l+1)} (a^{(l)})^T, \\
+   \nabla_{b^{(l)}} J(W,b;x,y) &= \delta^{(l+1)}.
+\end{align}$$</span><!-- Has MathJax --><br><strong>只需要额外增加一步<code>im2col</code></strong>。这一步的意思是将首先将整张图片按照卷积的窗口大小切好（按照stride来切，可以有重叠），然后各自拉成一列。<br>为啥要怎样做，因为对于这个小窗口内拉成一列的神经元来说来说，它们跟下一层神经元就是全连接了，所以这个小窗口里面的梯度计算就可以按照全连接来计算就可以了。</p>
+<p>如果对照着Caffe的<a href="https://github.com/BVLC/caffe/blob/master/src/caffe/layers/conv_layer.cpp" target="_blank" rel="external">卷积层源码</a>来看，就很清晰了。<br>forward的代码如下，假设没有分group，这段代码的意思是对于一个大小为num_的batch里面的任意一张图片，首先通过<code>im2col</code>展开成多个列向量，之后直接就用wx+b的方式就能够算到输出了。<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">void ConvolutionLayer&lt;Dtype&gt;::Forward_cpu(<span class="keyword">const</span> vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">      vector&lt;Blob&lt;Dtype&gt;*&gt;* top) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bottom.size(); ++i) &#123;</span><br><span class="line">    <span class="keyword">const</span> Dtype* bottom_data = bottom[i]-&gt;cpu_data();</span><br><span class="line">    Dtype* top_data = (*top)[i]-&gt;mutable_cpu_data();</span><br><span class="line">    Dtype* col_data = col_buffer_.mutable_cpu_data();</span><br><span class="line">    <span class="keyword">const</span> Dtype* weight = this-&gt;blobs_[<span class="number">0</span>]-&gt;cpu_data();</span><br><span class="line">    <span class="keyword">int</span> weight_offset = M_ * K_;  <span class="comment">// number of filter parameters in a group</span></span><br><span class="line">    <span class="keyword">int</span> col_offset = K_ * N_;  <span class="comment">// number of values in an input region / column</span></span><br><span class="line">    <span class="keyword">int</span> top_offset = M_ * N_;  <span class="comment">// number of values in an output region / column</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; num_; ++n) &#123;</span><br><span class="line">      <span class="comment">// im2col transformation: unroll input regions for filtering</span></span><br><span class="line">      <span class="comment">// into column matrix for multplication.</span></span><br><span class="line">      im2col_cpu(bottom_data + bottom[i]-&gt;offset(n), channels_, height_,</span><br><span class="line">          width_, kernel_h_, kernel_w_, pad_h_, pad_w_, stride_h_, stride_w_,</span><br><span class="line">          col_data);</span><br><span class="line">      <span class="comment">// Take inner products for groups.</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> g = <span class="number">0</span>; g &lt; group_; ++g) &#123;</span><br><span class="line">        caffe_cpu_gemm&lt;Dtype&gt;(CblasNoTrans, CblasNoTrans, M_, N_, K_,</span><br><span class="line">          (Dtype)<span class="number">1</span>., weight + weight_offset * g, col_data + col_offset * g,</span><br><span class="line">          (Dtype)<span class="number">0</span>., top_data + (*top)[i]-&gt;offset(n) + top_offset * g);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// Add bias.</span></span><br><span class="line">      <span class="keyword">if</span> (bias_term_) &#123;</span><br><span class="line">        caffe_cpu_gemm&lt;Dtype&gt;(CblasNoTrans, CblasNoTrans, num_output_,</span><br><span class="line">            N_, <span class="number">1</span>, (Dtype)<span class="number">1</span>., this-&gt;blobs_[<span class="number">1</span>]-&gt;cpu_data(),</span><br><span class="line">            bias_multiplier_.cpu_data(),</span><br><span class="line">            (Dtype)<span class="number">1</span>., top_data + (*top)[i]-&gt;offset(n));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以卷积看成是多个局部的全连接。笔者记得在某个地方看到过，实现卷积的方式有两个，一个是像caffe里面的im2col，另外一个是傅里叶变换。而后者的速度比较快，那么看来facebook给出的加速代码应该是用了傅里叶变换咯：)<br>言归正传，如果能够理解到<code>im2col</code>的作用，那么backward的代码也很容易理解了。<br>对于bias，直接就是delta(可能还要乘以<code>bias_multiplier_</code>，这个是Caffe自己的功能，默认不开启，即<code>bias_multiplier_=1</code>)<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Bias gradient, if necessary.</span></span><br><span class="line"><span class="keyword">if</span> <span class="comment">(bias_term_ &amp;&amp; this-&gt;param_propagate_down_[1])</span> &#123;</span><br><span class="line">  top_diff = top[i]-&gt;cpu_diff<span class="comment">()</span>;</span><br><span class="line">  for <span class="comment">(int n = 0; n &lt; num_; ++n)</span> &#123;</span><br><span class="line">	caffe_cpu_gemv&lt;Dtype&gt;<span class="comment">(CblasNoTrans, num_output_, N_,</span><br><span class="line">		1., top_diff + top[0]-&gt;offset(n)</span>,</span><br><span class="line">		bias_multiplier_.cpu_data<span class="comment">()</span>, <span class="number">1.</span>,</span><br><span class="line">		bias_diff);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于weights，batch中的每张图片，首先还是用<code>im2col</code>展开，之后用矩阵乘法表示累加：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Since we saved memory in the forward pass by not storing all col</span></span><br><span class="line"><span class="comment">// data, we will need to recompute them.</span></span><br><span class="line">im2col_cpu(bottom_data + (*bottom)[i]-&gt;offset(<span class="keyword">n</span>), channels_, height_,</span><br><span class="line">		   width_, kernel_h_, kernel_w_, pad_h_, pad_w_,</span><br><span class="line">		   stride_h_, stride_w_, col_data);</span><br><span class="line"><span class="comment">// gradient w.r.t. weight. Note that we will accumulate diffs.</span></span><br><span class="line"><span class="keyword">if</span> (this-&gt;param_propagate_down_[0]) &#123;</span><br><span class="line">  <span class="keyword">for</span> (int <span class="keyword">g</span> = 0; <span class="keyword">g</span> &lt; group_; ++<span class="keyword">g</span>) &#123;</span><br><span class="line">	caffe_cpu_gemm&lt;Dtype&gt;(CblasNoTrans, CblasTrans, M_, K_, N_,</span><br><span class="line">		(Dtype)1., top_diff + top[i]-&gt;offset(<span class="keyword">n</span>) + top_offset * <span class="keyword">g</span>,</span><br><span class="line">		col_data + col_offset * <span class="keyword">g</span>, (Dtype)1.,</span><br><span class="line">		weight_diff + weight_offset * <span class="keyword">g</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后是计算需要传回前一层的delta，也是先看成多个独立的全连接，但是最后需要还原成带有空间结构的形状，需要调用逆过程<code>col2im</code>，其实也是一个累加的过程，让每个空间位置的delta累加起来。<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// gradient w.r.t. bottom data, if necessary.</span></span><br><span class="line"><span class="keyword">if</span> <span class="comment">(propagate_down[i])</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> <span class="comment">(weight == NULL)</span> &#123;</span><br><span class="line">	weight = this-&gt;blobs_[<span class="number">0</span>]-&gt;cpu_data<span class="comment">()</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  for <span class="comment">(int g = 0; g &lt; group_; ++g)</span> &#123;</span><br><span class="line">	caffe_cpu_gemm&lt;Dtype&gt;<span class="comment">(CblasTrans, CblasNoTrans, K_, N_, M_,</span><br><span class="line">		(Dtype)</span><span class="number">1.</span>, weight + weight_offset * g,</span><br><span class="line">		top_diff + top[i]-&gt;offset<span class="comment">(n)</span> + top_offset * g,</span><br><span class="line">		<span class="comment">(Dtype)</span><span class="number">0.</span>, col_diff + col_offset * g);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// col2im back to the data</span></span><br><span class="line">  col<span class="number">2</span>im_cpu<span class="comment">(col_diff, channels_, height_, width_,</span><br><span class="line">	  kernel_h_, kernel_w_, pad_h_, pad_w_,</span><br><span class="line">	  stride_h_, stride_w_, bottom_diff + (*bottom)</span>[i]-&gt;offset<span class="comment">(n)</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后附带一提，在<a href="/2015/02/11/about-convolution/">“关于卷积”那篇</a>也提到了卷积运算是先要将kernel旋转180度之后再扫过去的。可以看出Caffe源码是没有这一步的，所以最后学出来的“kernel”实际上是应该还要旋转回来才是正确的卷积核。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+
+    <div class ="post-donate">
+      <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+           &uarr;<br>
+           
+            如果内容对您有帮助，不妨支持一下:)
+           
+        </span>
+        <br>
+      </div>
+
+      <div id="donate_guide" class="donate_bar center hidden">
+        
+          <a href="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" class="fancybox" rel="article0"       style="float:left;margin-left:25%;margin-right:2px;">
+          <img src="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" height="164px" width="164px">
+          </a>
+        
+
+      
+       <a href="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0">
+         <img src="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" height="164px" width="164px">
+       </a>
+      
+
+      </div>
+
+      <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function(){
+          $('#donate_board').addClass('hidden');
+          $('#donate_guide').removeClass('hidden');
+        }
+      </script>
+    </div>
+
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/"> #CNN </a>
+          
+            <a href="/tags/tools/"> #tools </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/02/20/paper-note-super-resolution-for-single-image/">论文笔记 《Super-Resolution from a Single Image》</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/02/11/about-convolution/">关于卷积</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+
+<div class="ds-share" data-thread-key="2015/02/11/about-caffe-code-convolutional-layer/" data-title="Caffe源码阅读（2） 卷积层" data-images="http://zhangliliang.com/2015/02/11/about-caffe-code-convolutional-layer/" data-content="http://zhangliliang.com/2015/02/11/about-caffe-code-convolutional-layer/" data-url="http://zhangliliang.com/2015/02/11/about-caffe-code-convolutional-layer/">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+
+          <!-- 评论框 -->
+          <div class="ds-thread" data-thread-key="2015/02/11/about-caffe-code-convolutional-layer/"
+               data-title="Caffe源码阅读（2） 卷积层" data-url="http://zhangliliang.com/2015/02/11/about-caffe-code-convolutional-layer/">
+          </div>
+        
+      </div>
+    
+  </div>
+  
+  <div style="position:relitive;float:bottom" >由于前段时间很忙，很久没有更新网站。发现多了不少评论和问题，无法一一回复。如果现在仍有问题请再次留言 :) 2016.03.29</div>
+
+
+
+          
+
+          
+        </div>
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zhang Liliang" />
+          <p class="site-author-name">Zhang Liliang</p>
+        </div>
+        <p class="site-description motion-element">On My Way to Be a Good R&D Engineer</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/zhangliliang" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/level0" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/level0" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+		
+		<div class="cc-license motion-element">
+          <a href="http://www.clustrmaps.com/map/zhangliliang.com" title="Visitor Map for zhangliliang.com"><img src="//www.clustrmaps.com/map_v2.png?u=O4it&d=oZmhivNx4M8eu2PLaeuWOb50HASEPiXS6Tih7mocqkY" /></a>
+        </div>
+		
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2016
+  
+  <span class="author"> Zhang Liliang</span>
+</div>
+
+<div class="powered-by">
+  <div style="float:left;margin-top:7px;margin-right:10px;">
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254711542'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254711542%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+   鲁ICP备15013969号
+</div>
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Clone theme 
+  <a class="theme-link" href="https://github.com/xirong/hexo-theme-next" rel="external nofollow">
+    NexT
+  </a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <!-- <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script> -->
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <!-- <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+ -->
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebarToggleMotion();
+    postsListMotion();
+    backToTopMotion();    
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+//search animate
+$(function(){
+   $('#ts-search-input').focus(function() {  //设置获得焦点时的方法，让文本框变长
+    $(this).animate({width: "150"}, 300 );  
+    $(this).val(''); //用于清空内容，可选操作
+   });
+ 
+   $('#ts-search-input').blur(function() {  //设置失去焦点时的方法，让文本框变短
+    $(this).animate({width: "70"}, 300 );
+   });
+});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebarToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+
+
+
+   <script type="text/javascript">
+    var HEXO_SIDEBAR_CONFIGURATION = 'post';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangliliang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4dd9fbea330c98acc0ff7b6538270f3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script></body>
+</html>

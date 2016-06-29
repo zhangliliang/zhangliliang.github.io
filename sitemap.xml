@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/08/25/about-svm/</loc>
+    <lastmod>2016-06-29T07:07:50.139Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2016/04/05/paper-note-hypernet/</loc>
+    <lastmod>2016-04-05T13:52:09.342Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2016/03/31/mooc-introduction-to-aerial-robotics/</loc>
+    <lastmod>2016-04-01T15:02:33.444Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/about/index.html</loc>
+    <lastmod>2016-03-31T03:54:27.552Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/05/27/about-caffe-code-softmax-loss-layer/</loc>
+    <lastmod>2015-06-21T02:36:24.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/05/19/paper-note-object-proposal-review-pami15/</loc>
+    <lastmod>2015-05-19T06:22:30.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/14/paper-note-bing/</loc>
+    <lastmod>2015-05-19T01:38:01.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/tags/index.html</loc>
+    <lastmod>2015-05-18T08:48:49.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/11/22/paper-note-latent-structural-svm/</loc>
+    <lastmod>2015-05-18T08:07:17.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/08/31/paper-note-cnsvm-and-dlsvm/</loc>
+    <lastmod>2015-05-17T16:27:04.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/28/paper-note-hcp/</loc>
+    <lastmod>2015-05-17T16:25:29.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/10/27/paper-note-dda/</loc>
+    <lastmod>2015-05-17T16:25:04.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/10/30/paper-note-deepid-net/</loc>
+    <lastmod>2015-05-17T16:24:00.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/12/paper-note-densenet/</loc>
+    <lastmod>2015-05-17T16:23:42.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/11/paper-note-overfeat/</loc>
+    <lastmod>2015-05-17T16:22:17.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/04/29/paper-note-ssim/</loc>
+    <lastmod>2015-05-17T16:21:59.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/08/30/mooc-think-again/</loc>
+    <lastmod>2015-05-17T16:20:20.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/01/mathjax-test/</loc>
+    <lastmod>2015-05-17T16:11:05.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/02/11/about-caffe-code-convolutional-layer/</loc>
+    <lastmod>2015-05-17T16:08:04.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/05/17/paper-note-ms-cnn/</loc>
+    <lastmod>2015-05-17T08:46:15.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/05/17/paper-note-fast-rcnn/</loc>
+    <lastmod>2015-05-17T07:13:56.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/05/12/paper-note-cnn-crf-face-labeling/</loc>
+    <lastmod>2015-05-12T07:52:39.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/05/05/paper-note-sr-using-deformable-patches/</loc>
+    <lastmod>2015-05-05T13:37:02.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/04/28/paper-note-sematic-driven-portrait-cartoon-stylization/</loc>
+    <lastmod>2015-04-28T04:05:44.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/03/10/about-affine-transform/</loc>
+    <lastmod>2015-03-10T08:01:58.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/03/06/paper-note-real-time-exemplar-based-face-sketch-synthesis/</loc>
+    <lastmod>2015-03-07T02:23:12.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/03/05/paper-note-cnn-at-constrained-time-cost/</loc>
+    <lastmod>2015-03-05T13:01:55.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/02/23/paper-note-accurate-blur-models-help-super-resolution/</loc>
+    <lastmod>2015-02-23T04:38:49.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/02/21/paper-note-nonparam-blind-super-resolution/</loc>
+    <lastmod>2015-02-21T03:35:06.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/02/20/paper-note-super-resolution-for-single-image/</loc>
+    <lastmod>2015-02-20T05:43:39.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/02/11/about-convolution/</loc>
+    <lastmod>2015-02-17T03:38:25.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/15/about-caffe-code-full-connected-layer/</loc>
+    <lastmod>2015-02-11T14:08:57.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/02/09/about-biliear-interpolation/</loc>
+    <lastmod>2015-02-09T08:44:56.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2015/02/01/about-sparse-coding/</loc>
+    <lastmod>2015-02-01T03:58:06.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/11/30/paper-note-fcnn-crowd-seg/</loc>
+    <lastmod>2015-02-01T02:37:39.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/10/about-svn/</loc>
+    <lastmod>2014-12-22T03:25:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/11/28/paper-note-fcn-segment/</loc>
+    <lastmod>2014-11-28T11:33:41.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/11/14/paper-note-joint-deep-learning-for-predestrian-detection/</loc>
+    <lastmod>2014-11-14T08:05:48.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/02/about-command-at-linux/</loc>
+    <lastmod>2014-11-13T05:03:10.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/11/10/paper-note-part-rcnn/</loc>
+    <lastmod>2014-11-11T02:34:12.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/11/08/paper-note-cnn-analysis/</loc>
+    <lastmod>2014-11-08T09:30:13.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/11/06/paper-note-efficient-backprop/</loc>
+    <lastmod>2014-11-06T08:16:39.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/11/02/paper-note-dsn/</loc>
+    <lastmod>2014-11-03T04:18:32.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/22/paper-note-maxout-and-nin/</loc>
+    <lastmod>2014-09-22T14:52:46.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/05/15/mooc-machine-learning/</loc>
+    <lastmod>2014-09-15T12:46:16.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/03/mooc-model-thinking/</loc>
+    <lastmod>2014-09-15T12:46:14.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/01/mooc-introduce-to-finance/</loc>
+    <lastmod>2014-09-15T12:45:47.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/14/book-note-poor-charlie/</loc>
+    <lastmod>2014-09-15T12:23:59.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/15/about-ctex/</loc>
+    <lastmod>2014-09-15T02:08:07.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/13/paper-note-sppnet/</loc>
+    <lastmod>2014-09-14T08:55:45.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/23/paper-note-rcnn/</loc>
+    <lastmod>2014-09-13T15:56:38.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/13/paper-note-dpm-with-cnn-feature/</loc>
+    <lastmod>2014-09-13T03:52:41.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/09/about-libsvm/</loc>
+    <lastmod>2014-09-09T15:49:56.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/07/about-first-traval-at-kaggle/</loc>
+    <lastmod>2014-09-07T13:50:27.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/01/paper-note-dpm/</loc>
+    <lastmod>2014-09-07T07:12:25.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/09/06/about-liblinear/</loc>
+    <lastmod>2014-09-07T02:36:06.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/08/21/about-my-travel-in-ilsvrc2014/</loc>
+    <lastmod>2014-09-07T02:17:35.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/08/14/book-note-thinking-fast-and-slow/</loc>
+    <lastmod>2014-08-31T13:10:50.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/08/25/paper-note-cnn-feature-plus-gaussian-kernel-svm/</loc>
+    <lastmod>2014-08-25T12:09:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/18/about-nn/</loc>
+    <lastmod>2014-08-23T02:30:39.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/05/29/book-note-mindmap-make-friend-with-time/</loc>
+    <lastmod>2014-08-14T12:52:10.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/27/book-note-mindmap-the-crowd/</loc>
+    <lastmod>2014-08-14T12:52:00.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/30/paper-note-imporovements-on-dnn-classification/</loc>
+    <lastmod>2014-07-29T23:58:42.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/26/about-tmux/</loc>
+    <lastmod>2014-07-26T08:35:56.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/18/paper-note-dnn-detection/</loc>
+    <lastmod>2014-07-18T08:48:29.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/17/paper-note-selective-search/</loc>
+    <lastmod>2014-07-17T11:11:44.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/12/about-regular-expression/</loc>
+    <lastmod>2014-07-12T15:32:43.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/07/01/paper-note-alexnet-nips2012/</loc>
+    <lastmod>2014-07-11T14:46:07.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/03/mooc-get-data/</loc>
+    <lastmod>2014-06-24T00:41:01.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/20/linux-modify-startup-sequence/</loc>
+    <lastmod>2014-06-19T23:43:15.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/14/from-lr-to-cnn/</loc>
+    <lastmod>2014-06-15T03:04:38.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/11/about-tesseract/</loc>
+    <lastmod>2014-06-10T23:35:48.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://zhangliliang.com/2014/06/05/about-git/</loc>
+    <lastmod>2014-06-07T06:45:01.000Z</lastmod>
+  </url>
+  
+</urlset>

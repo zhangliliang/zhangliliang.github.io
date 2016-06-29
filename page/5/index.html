@@ -1,0 +1,1488 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv=”Cache-Control” content=”no-transform” />
+<meta http-equiv=”Cache-Control” content=”no-siteapp” />
+
+
+
+
+    <meta name="description" content=", On My Way to Be a Good R&D Engineer" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+
+  <link rel="alternate" href="/atom.xml" title="在路上" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+  <title> 在路上 </title>
+</head>
+
+<body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://static.ixirong.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+
+    <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+
+
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">在路上</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    <div class="c-search-form-div" style="display:none;">
+      
+      
+    </div>
+    <script type="text/javascript">
+      if(isDesktop() || isTablet()){        
+        $('.c-search-form-div').css("display","inline");
+      }    
+    </script>
+
+    
+      
+      
+        <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+      
+    
+
+    <script type="text/javascript">
+      if(!isMobile()){
+         $('.menu-item-commonweal').css("display","");
+      }
+    </script>
+
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+  <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/09/01/paper-note-dpm/">
+                论文笔记 《Object Detection with Discriminatively Trained Part Based Models》
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-09-01
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/09/01/paper-note-dpm/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/01/paper-note-dpm/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          一句话概括，根节点+可变部分节点，在CNN出来之前，被认为是最好的detector
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/09/01/paper-note-dpm/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Computer-Vision/"> #Computer Vision </a>
+          
+            <a href="/tags/SVM/"> #SVM </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/08/31/paper-note-cnsvm-and-dlsvm/">
+                论文笔记 《Convolutional Neural Support Vector Machines:Hybrid Visual Pattern Classifiers for Multi-robot Systems》 and 《Deep Learning using Linear Support Vector Machines》
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-08-31
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/08/31/paper-note-cnsvm-and-dlsvm/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/31/paper-note-cnsvm-and-dlsvm/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          一句话概括，联合训练CNN和SVM。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/31/paper-note-cnsvm-and-dlsvm/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/"> #CNN </a>
+          
+            <a href="/tags/Computer-Vision/"> #Computer Vision </a>
+          
+            <a href="/tags/SVM/"> #SVM </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/08/30/mooc-think-again/">
+                课堂笔记 《Think Again:How to Reason and Argue》
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-08-29
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/08/30/mooc-think-again/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/30/mooc-think-again/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          Note of a MOOC course, and I try to take note by English. :)
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/30/mooc-think-again/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MOOC/"> #MOOC </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/08/25/paper-note-cnn-feature-plus-gaussian-kernel-svm/">
+                论文笔记 《Large-scale Learning with SVM and Convolutional for Generic Object Categorization》
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-08-25
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/08/25/paper-note-cnn-feature-plus-gaussian-kernel-svm/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/25/paper-note-cnn-feature-plus-gaussian-kernel-svm/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          一句话概括，用CNN作为特征提取器，然后连接上一个Guassian Kernel SVM作为强分类器。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/25/paper-note-cnn-feature-plus-gaussian-kernel-svm/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/"> #CNN </a>
+          
+            <a href="/tags/Computer-Vision/"> #Computer Vision </a>
+          
+            <a href="/tags/SVM/"> #SVM </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/08/25/about-svm/">
+                关于SVM
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-08-25
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/08/25/about-svm/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/25/about-svm/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          记录SVM学习过程中的笔记
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/25/about-svm/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/"> #Machine Learning </a>
+          
+            <a href="/tags/SVM/"> #SVM </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/08/21/about-my-travel-in-ilsvrc2014/">
+                在路上@ILSVRC2014
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-08-21
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/08/21/about-my-travel-in-ilsvrc2014/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/21/about-my-travel-in-ilsvrc2014/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>ILSVRC2014结束了，我们队伍在cls+loc的track是第三名（SYSU_Vision，err=31.9%），跟第一名结果差6.6%(VGG, 25.3%)。</p>
+<h2 id="我们的工作">我们的工作</h2><h3 id="Solution_1">Solution 1</h3><h4 id="classification">classification</h4><ol>
+<li>基于<a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">Caffe</a>进行来训练分类模型，模型的设计参考了<a href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks" target="_blank" rel="external">Alex的工作</a>和<a href="http://www.matthewzeiler.com/pubs/arxive2013/arxive2013.pdf" target="_blank" rel="external">Matthew的工作</a>。我们训练出来的单个模型的top5err=18%（略菜啊。。竟然还调了1个月）</li>
+<li>使用了<a href="http://cilvr.nyu.edu/doku.php?id=software:overfeat:start" target="_blank" rel="external">Overfeat</a>提供的两个模型，top5err分别是16%和17%</li>
+<li>对上面三个模型的结果求平均，得到了classification最后的top5err=14.33%</li>
+</ol>
+<h4 id="localization">localization</h4><ol>
+<li>训练了单个的CNN模型，输出是直接回归bbox的结果(x1, y1, x2, y2)。这样子，准确率在65%左右。</li>
+<li>使用上述的CNN模型，对于每个类别都finetuning出来一个单独的CNN，合计1k个模型，这样子准确率提高到71%左右</li>
+<li>利用聚类的方法，将10个相近的类别聚在一个cluster里面，对于每个cluster里面的类别，通过share样本进行finetuning，这样子准确率提到到75%左右。</li>
+</ol>
+<h3 id="classification+localization">classification+localization</h3><p>简单地将上面的模型串联起来：先做classification，得到类别的top5 predictions，然后对于每个predction，使用对应的localization模型得到bbox。<br>所以准确率可以简单地乘起来，最后在test的top5err为36.3%</p>
+<h3 id="Solution_2">Solution 2</h3><h4 id="classification-1">classification</h4><p>用的是与solution 1一样的分类模型，top5err=14.33%</p>
+<h4 id="localization-1">localization</h4><p>参考了<a href="https://github.com/rbgirshick/rcnn" target="_blank" rel="external">R-CNN</a>框架。具体来说：</p>
+<ol>
+<li>对于每张图片，用selective search提取出约2k个proposal</li>
+<li>对proposal训练一个CNN的分类模型，训练时候用的是上面的classfication中的CNN模型作为初始化。</li>
+</ol>
+<h4 id="classification+localization-1">classification+localization</h4><p>也是串联起来：</p>
+<ol>
+<li>先用classfication中的CNN选出top5的prediction</li>
+<li>对于2k个proposal，用localization的CNN计算出每个proposal的分数并排序</li>
+<li>对于每个top5的prediction，选择该类下分数最高的proposal作为定位结果</li>
+</ol>
+<p>Solution 2的top5err为36.3%</p>
+<h4 id="更多细节">更多细节</h4><ul>
+<li>为何要先分类再定位，而不直接用R-CNN框架直接做detection？<br>因为cls+loc数据集跟det数据集不一样，gt bbox没有完全标记，所以无法得到确定的背景。因而很难训练出一个好的分类CNN，导致了直接用R-CNN框架时候，分类的准确率过低（top5准确率在70%左右）。</li>
+<li>训练localization中的CNN时候，overlap&gt;0.8的proposal是正样本，overlap&lt;0.3的proposal是负样本——也就是overlap在0.3~0.8之间的样本被忽略了。这是因为cls+loc只要求给每一类找到一个实例即可（而不像det里面需要找到所有实例），于是拉开正负样本距离能够提高模型对正样本的分辨能力，以及减少训练时间。</li>
+<li>为什么效果不够理想？<br>因为时间不够了。。。当时做R-CNN时候，距离提交时间还有两周，走一遍流程时间就用完了，没有时间调参，个人认为经过调参后效果应该能够提高好几个点。<br>另外，对比优胜队伍，我们的分类准确率也低了很多。。。这也是效果不好的一大原因。</li>
+<li>提高的思路？<ul>
+<li>当然是，调参。</li>
+<li>在得到最高分的proposal后，不是直接当成识别出来的bbox，而是在proposal里面做一次回归来修正得到结果作为bbox。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Solution_3">Solution 3</h3><p>直接对上述两种方法出来的bbox求平均，top5err下降到33.8%</p>
+<h3 id="Solution_4">Solution 4</h3><p>在验证集的5w中图片中，分别用Solution 1和Solution 2跑出结果，并统计其中每一类的定位的准确率。<br>那么我们就知道了对于某些类来说，solution 1起到比较好的定位结果；而另外一些类比较适合用Solution 2（通常都是包含了小物体和多物体的类别，用selective search能够比直接回归表现好）<br>然后，测试阶段，对于识别出来的top5分类结果，选择较好的定位模型来进行定位。<br>这样做的话，top5err下降到了31.9%</p>
+<h2 id="得失">得失</h2><ul>
+<li>差距是有的，但是我觉得没有想象中大。主要差在：<ol>
+<li>准备时间，从6月份开始备战，最后转到rcnn框架下距离比赛还有两周，基本没时间调参了，一些改进的想法也没有时间做了。</li>
+<li>个人觉得主要差距是在分类模型上，err14.4%vserr7.4%，差了7个点，我换算过，如果我们的分类模型能够达到这个水平，cls+loc的错误率会降到26%附近。</li>
+</ol>
+</li>
+<li>如果让我概括这次比赛的结果，我觉得是两点：<ul>
+<li>RCNN的selective search+CNN分类的框架被优胜队伍广泛使用</li>
+<li>detection的提高是因为classification的提高，classification的提高是因为用了更大更深的网络</li>
+</ul>
+</li>
+<li>个人需要改进的<ul>
+<li>论文读太少，到后期才开始看Overfeat和RCNN，这些工作应该从一开始就要看的，在没有把握到正确方向之前就开始盲目实验导致了浪费了大量时间。</li>
+<li>讨论得太少，一周一次的组内的讨论应该算是充分了，主要是缺少到组外去抱大腿，应该要多看牛人们分享的信息。</li>
+<li>创新少，从上面可以看出我们的工作大部分是借用了现成的框架，代码，甚至模型，除了在Solution 1的聚类finetuning是自己想的方法，没有太多新的思路。</li>
+</ul>
+</li>
+</ul>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/"> #CNN </a>
+          
+            <a href="/tags/Computer-Vision/"> #Computer Vision </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/08/14/book-note-thinking-fast-and-slow/">
+                读书笔记 《思考，快与慢》
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-08-14
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/08/14/book-note-thinking-fast-and-slow/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/14/book-note-thinking-fast-and-slow/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          一句话概括，由于我们具有擅长直觉处理且反应迅速的系统1（快思考），以及擅长计算但相当懒惰的系统2（慢思考），所以我们会有很多的系统性偏差和偏见。本书讨论的就是这些系统性的偏差带来的影响。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/08/14/book-note-thinking-fast-and-slow/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/"> #读书笔记 </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/07/30/paper-note-imporovements-on-dnn-classification/">
+                论文笔记 《Some Improvements on Deep Convolutional Neural Network Based Image Classif ication》
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-07-29
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/07/30/paper-note-imporovements-on-dnn-classification/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/07/30/paper-note-imporovements-on-dnn-classification/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          一句话概括，一些训练和测试CNN时候的trick，可以提高准确率
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/07/30/paper-note-imporovements-on-dnn-classification/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/"> #CNN </a>
+          
+            <a href="/tags/Computer-Vision/"> #Computer Vision </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/07/28/paper-note-hcp/">
+                论文笔记 《CNN:Single-label to Multi-label》
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-07-28
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/07/28/paper-note-hcp/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/07/28/paper-note-hcp/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          一句话概述，用BING+CNN做multi-cls问题
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/07/28/paper-note-hcp/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/"> #CNN </a>
+          
+            <a href="/tags/Computer-Vision/"> #Computer Vision </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/07/27/book-note-mindmap-the-crowd/">
+                《乌合之众》的思维导图
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-07-27
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/07/27/book-note-mindmap-the-crowd/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/07/27/book-note-mindmap-the-crowd/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          2小时学会洗脑和反洗脑
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/07/27/book-note-mindmap-the-crowd/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mindmap/"> #mindmap </a>
+          
+            <a href="/tags/读书笔记/"> #读书笔记 </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+  </div>
+
+  
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">&raquo;</a>
+  </div>
+
+
+
+          
+
+          
+        </div>
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zhang Liliang" />
+          <p class="site-author-name">Zhang Liliang</p>
+        </div>
+        <p class="site-description motion-element">On My Way to Be a Good R&D Engineer</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/zhangliliang" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/level0" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/level0" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+		
+		<div class="cc-license motion-element">
+          <a href="http://www.clustrmaps.com/map/zhangliliang.com" title="Visitor Map for zhangliliang.com"><img src="//www.clustrmaps.com/map_v2.png?u=O4it&d=oZmhivNx4M8eu2PLaeuWOb50HASEPiXS6Tih7mocqkY" /></a>
+        </div>
+		
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2016
+  
+  <span class="author"> Zhang Liliang</span>
+</div>
+
+<div class="powered-by">
+  <div style="float:left;margin-top:7px;margin-right:10px;">
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254711542'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254711542%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+   鲁ICP备15013969号
+</div>
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Clone theme 
+  <a class="theme-link" href="https://github.com/xirong/hexo-theme-next" rel="external nofollow">
+    NexT
+  </a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <!-- <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script> -->
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <!-- <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+ -->
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebarToggleMotion();
+    postsListMotion();
+    backToTopMotion();    
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+//search animate
+$(function(){
+   $('#ts-search-input').focus(function() {  //设置获得焦点时的方法，让文本框变长
+    $(this).animate({width: "150"}, 300 );  
+    $(this).val(''); //用于清空内容，可选操作
+   });
+ 
+   $('#ts-search-input').blur(function() {  //设置失去焦点时的方法，让文本框变短
+    $(this).animate({width: "70"}, 300 );
+   });
+});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebarToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+
+   <script type="text/javascript">
+    var HEXO_SIDEBAR_CONFIGURATION = 'post';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+  
+
+
+  
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4dd9fbea330c98acc0ff7b6538270f3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  
+</body>
+</html>

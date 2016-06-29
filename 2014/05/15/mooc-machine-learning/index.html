@@ -1,0 +1,1234 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv=”Cache-Control” content=”no-transform” />
+<meta http-equiv=”Cache-Control” content=”no-siteapp” />
+
+
+  <meta name="keywords" content=" ,MOOC,Machine Learning, " />
+
+
+
+    <meta name="description" content="课堂笔记 《Machine Learning》, On My Way to Be a Good R&D Engineer" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+
+  <link rel="alternate" href="/atom.xml" title="在路上" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+  <title> 课堂笔记 《Machine Learning》 - 在路上 </title>
+</head>
+
+<body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://static.ixirong.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+
+    <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+
+
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">在路上</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    <div class="c-search-form-div" style="display:none;">
+      
+      
+    </div>
+    <script type="text/javascript">
+      if(isDesktop() || isTablet()){        
+        $('.c-search-form-div').css("display","inline");
+      }    
+    </script>
+
+    
+      
+      
+        <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+      
+    
+
+    <script type="text/javascript">
+      if(!isMobile()){
+         $('.menu-item-commonweal').css("display","");
+      }
+    </script>
+
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              课堂笔记 《Machine Learning》
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-05-15
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/05/15/mooc-machine-learning/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/15/mooc-machine-learning/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>20140403</p>
+<p>关于线性回归和逻辑回归</p>
+<ol>
+<li><p>线性回归是用于拟合数据的，也就是用于prediction，如果用它做classification（加一个threshold二分类），效果会很不好。逻辑回归一般是用来做classification的，也可以这样说，逻辑回归是对某个样本是正样本的概率进行了prediction，这个prediction我们再加上一个threshold做二分类，就变成了classification。</p>
+</li>
+<li><p>线性回归的cost函数直接用最小二乘就是一个凸函数了，而逻辑回归用最小二乘作为cost的话函数是非凸的，大概长这个样子：<br><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_m3cbecd82.png" alt="image"><br>于是引入了另外的cost function：<br><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_6659d96a.png" alt="image">这样子cost函数就会变成凸函数了，就能够用梯度下降求到最优解了。</p>
+</li>
+<li>下面讲了优化算法除了梯度下降还有其他conjugate gradient，BFGS之类，这些算法不需要自己设置学习率，而且速度一般比梯度下降要快。但实现较为复杂，可以直接调用matlab的优化函数。</li>
+<li>虽然线性回归用的MSE和逻辑回归用的MLE在cost function上形式差别比较大，但是求导之后的形式倒是一样的（其中<img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_2e482231.png" alt="image">的定义不一样，前者是wx，后者是wx+sigmoid），都是：</li>
+</ol>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_1d31365d.png" alt="image"></p>
+<p>20140403</p>
+<p>今天提交作业2,100分~</p>
+<p>不过中间尝试的时候做错过一次，是计算regularized logistic<br>regression时候的cost function，最后的regularize<br>term的theta平方相加的时候，是不用加上theta0的。</p>
+<p>\</p>
+<p>20140408</p>
+<p>今天一口气将week4都看完了，因为week4和week5讲的是神经网络，这个已经很熟悉了。</p>
+<p>一开始讲了为什么要引入神经网络这个非线性的分类器。用线性回归和逻辑回归也能够解决部分的非线性问题，他们是通过将特征映射到高维的区间上来进行分类的（这个跟SVM的假设是一致的，认为高维之后的特征向量可能就能够线性可分了）。</p>
+<p>但这样也带来一个问题就是特征空间会O(n\^2)（映射到二维的情况）地增长，100个特征映射到5000维，如果是映射到三维，那么就更加恐怖了。特征过多会带来过拟合的问题。</p>
+<p>于是引入了神经网络这个非线性的分类器来解决问题，中间还用了直觉的例子来说明神经网络是怎么通过级联线性单元来表示非线性的函数的。就是下图的经典XOR分类问题。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_51d517b0.png" alt="image"></p>
+<p>其实简单来说，可以把神经网络看成是一个特征组合（特征表示，feature<br>representation）的过程，对于每个隐层，都是一次特征重新组合的过程，通过神经网络训练出来了一种特征组合的表示方式。（这个跟我们开seminar时候讲的道理是一致的）。LeNet的例子就很能说明这个问题：</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_104fb721.png" alt="image"></p>
+<p>又及，神经网络的公式也可以用向量的形式来表示，确实简洁多了。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_m77bf58be.png" alt="image"></p>
+<p>\</p>
+<p>20140414</p>
+<p>今天看了Week5 learning ANN的其中一部分。</p>
+<p>总结下收获：</p>
+<ol>
+<li><p>LS和MLE在高斯噪声下是等价的：在线性回归的时候就发现了LS和MLE最后得到的cost function虽然形式是不同的，但是对他们进行求导之后，形式却是一样的。之前Seminar时候亚龙讲ANN时候，也提到了ANN有MAP和MLE两种形式，但后面MLE自动就变成了LS了。从求导的意义上来讲，它们两个却是是等价的。</p>
+</li>
+<li><p>Andrew的cost function里面多了一个regular term，跟Mitchell书上的公式貌似不太一样，最后差别貌似最后更新时候，bias term的更新会少了一个更新（λ*weight），具体起来还有会其他的差别吗？这个留作一个疑问吧。</p>
+</li>
+<li><p>ANN的计算过程却是比较复杂，当时上李蕾老师课时候实现就出了bug，后来是重写了一次才正确了。Andew给出了一个检查求导通用的方法，其实就是用小变化来拟合导数，f’(x)≈(f(x+e)-f(x-e))/2*e，其中e是很小的一个值（比如10\^-4）。这个就跟我们图像处理的时候用来求导的方法很像了，因为图像的最小单位是1像素，所以e=1.</p>
+</li>
+</ol>
+<p>\</p>
+<p>20140423</p>
+<p>今天看week6的应用ML时候遇到高错误率（高代价函数）时候的应对方法。这时候一般我们会有很多想法，比如增减数据，调整bias<br>term，增删特征。这样乱搞最后效果不一定好，而且耗时，Andrew给出一个诊断方法。</p>
+<p>首先将问题分成了high bias和high<br>variance，从命名方式来理解这两种情况。High<br>bias就是underfitting，这时候一般bias项都很大，造成其他参数都很小，所以叫high<br>bias问题；high variance则对应overfitting问题，这时候对于validation<br>set来说，代价很高，样本在拟合的曲线附近飘得很远，所以叫做high<br>variance问题。</p>
+<p>诊断这两个问题，给出了3种图例，其中用learning<br>curve的诊断效果最后，andrew说他也用这个。</p>
+<p>正常的learning curve类似下图，Jtrain逐渐变大，Jcv逐渐变小，最后达到差不多。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_7a959bd5.png" alt="image"></p>
+<p>High<br>Bias，或者说underfitting的情况，就是曲线快速聚集到一块，可以看成模型过于简单的情况，这时候增加样本并不能起到作用。因为模型的表达能力有限，所以增加样本没用，这时候应该考虑增加模型的复杂度。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_59680d88.png" alt="image"></p>
+<p>下图是high<br>variance问题，也就是overfitting，相反，这里的曲线跟正常时候的唯一差别是两根曲线聚拢的速度过慢。直观地理解成模型过于复杂，需要更多的数据来适应这个模型。</p>
+<p>这时候增加样本数据或者是能够解决high<br>variance的问题的。但注意到有时候是因为模型过于复杂了，或者模型本身已经偏离了正常的假设，这时候增加数据我觉得只是南辕北辙。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_m22ca333.png" alt="image"></p>
+<p>所以有了上述的诊断方法后，其实解决方案可以区分成：</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_m2f949bb1.png" alt="image"></p>
+<p>也就是看到ML模型效果不好的时候，首先诊断是high variance还是high<br>bias，这个通过learning curve来得到（如果现在的CNN一次训练那么久就很难知道了，用其他思路，比如直观地看单次的效果来推测，或者看iteration的error curve）。</p>
+<p>然后如果是high variance，也就是过拟合，说明模型太复杂，或者数据量不够，这时候就简化模型，或者增加样本；反之，是high bias，也就是低拟合，说明模型太简单，这时候增加数据量就没用（当然减少数据量更加不科学了），这时候可以考虑增加模型的复杂度，或者引入更大的正则项。</p>
+<p>\</p>
+<p>20140424</p>
+<p>今天看week6的下半部分，用实例来说明怎么构建一个好的ML系统。用Anti-spam做例子，我们该不该用stemmed和统一大小写的方法？用什么特征和什么分类器？Andrew认为一开始不用考虑太细致，直接用一天的时间实现一个toy<br>example般的分类器，然后根据分类器在validation<br>set上的错误率和分错的样本来寻找改进的思路（更好的特征？更合适的分类器？比如如果分错的邮件中大量包含某个单词，可以认为这个单词是有效的特征）。这个方法的思路是我们要根据实际情况来调整自己的想法，而不是根据“gut”、直觉来选择方法，以至于浪费了时间在错误的方向上。</p>
+<p>至于分辨错误率的工具，如果数据偏差很严重，也就是skewed<br>classes，比如病人中患有癌症的很少，这时候应该用PR值来更加合理地说明检测结果的好坏。如果定下阈值，那么就变成了PR曲线。可以通过实际问题来调整PR曲线，比如要求high<br>precision，就设置大的阈值等。以及，用F1 score来衡量某对PR值的好坏。</p>
+<p>最后也提到了大数据对准确率的影响：</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_575a657.png" alt="image"></p>
+<p>当训练集很大的时候，算法的效果都普遍提升了。Andrew也提到数据不是万能的，当特征不好，模型简单时候，数据就发挥不了它的威力。</p>
+<p>\</p>
+<p>20140425</p>
+<p>昨晚和今天做ex5，有收获，记录下。</p>
+<p>Loss function != training error。以linear regression为例子，loss function是training error+正则项。但计算train set和validation set的error时候，就不应该引入正则项了。因为，正则项是用来限制theta的量级的，所以不能算是模型统计出来的结果的error——比如square loss是在欧氏距离下样本真实值和估计值的差别——这个才是train set的error，正则项不属于这里。（说得有点乱，反正，J和Jtrain是不同的计算公式就对了，要理解内涵）</p>
+<p>正则项很厉害，至少对于polygon linear regression是的，比如题目要拟合的模型是2次型的（我觉得是），代码中用了8次型的模型来拟合，如果正则项lambda为0（就是没有正则项），那么就会过拟合，如果设置lambda为1，那么就会拟合得很好。（如果根据lambda来进行训练，那么会知道lambda=3时候，模型在这个数据集上表现最好）。正则项在防止过拟合方面真是，当然设置过大的lambda，就会变成欠拟合了。（觉得如果增加样本个数应该也能够防止过拟合问题，如果数据过多，会出现欠拟合问题吗？感觉是不会的。。。这个细想真有意思）</p>
+<p>\</p>
+<p>20140428</p>
+<p>今天开始讲SVM。Andrew用了另外一个角度来讲述，让人惊艳。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_m31467869.png" alt="image"></p>
+<p>上图描述了SVM和logistic<br>regression之间的联系。也就是，SVM可以看成修改了cost function和hypothesis的logistic regression。对于cost function，SVM变成了分段函数，在+-1处做了分段，对于hypothesis，SVM也不再是一个连续的概率表示，而是变成了0,1的两个取值的函数。</p>
+<p>这样做的目的，是让SVM的优化目标变成了凸函数！！！<del>而</del><del>logistic regression是非凸的！！（</del><del>logistic regression的</del><del>cost也是凸的，如果是</del><del>MLE的是，而不是</del><del>LS）</del>这样SVM就没有陷入局部最优的问题了。</p>
+<p>另外一个改变是SVM将regular term从λ改成了C，也就是：</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_2c056cd9.png" alt="image"></p>
+<p>个人理解，这是以为这个是要强调SVM是最大间隔分类器，而这个最大间隔是由后面的theta方求和来决定了。将前面的看成是松弛项。</p>
+<p>那么松弛项的作用是什么呢，一般来说，如果样本是线性可分的，那么整个松弛项其实是可以等于0的，也就是可以要求对于训练集每个样本都是正确分开的。不过这回带来一个outline的问题。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_323c94dd.png" alt="image"></p>
+<p>也就是上图中的斜着的那根黑线，如果C设置得很大，也就是对于分错会异常敏感，SVM会趋向于要分对每一个样本。如果将C设置得小一些，那么SVM的容错性会增强，最后拟合出来的黑线是类似竖着的那根的情况。</p>
+<p>将C看成是1/λ，上面就好理解了，C大，就是λ小，也就是容易过拟合（对outliner敏感），反过来，C小，λ大，就相对不容易过拟合（但是太小了就会欠拟合，到最后还是一个调参的过程）。</p>
+<p>（话说，在我们做分类器的时候，貌似都不强调对样本进行去outliner的处理的，这是why呢？）</p>
+<p>\</p>
+<p>20140429</p>
+<p>之后讲了用核来解决非线性样本的问题，Andrew讲解了Gaussian kernel，讲得很直观，每个样本看成一个地标，每个地标又定义成一个特征（某种高斯距离）。</p>
+<p>讲了设置参数的问题，怎么根据实际拟合情况来进行调参。</p>
+<p>又及讲了不需要自己去写SVM，用liblinear和libsvm库就很好。</p>
+<p>\</p>
+<p>20140430</p>
+<p>这周说的是非监督的方法，讲了k-mean和PCA。</p>
+<p>K-mean没什么特别的，就是随机选k个样本作为初始的中心，然后不断聚集，计算新的中心，直到收敛到一定值。选K方面提到了一个elbow的方法，不过其实大部分情况还是认为指定的。</p>
+<p>重点是PCA，明确了几点：</p>
+<ol>
+<li><p>PCA的目标是最小化投影误差，也就是下图的蓝色部分：<br><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_4ab130f2.png" alt="image"></p>
+</li>
+<li><p>PCA是为了（1）数据压缩（2）可视化。所以一般情况，能用raw data能够获得较好的效果的话，就不应该用PCA。</p>
+</li>
+<li><p>PCA只是一种投影，而且是不考虑label的投影，所以投影之后，对分类效果未必会有帮助，说不定还有损失</p>
+</li>
+<li><p>所以，不要在过拟合问题上用PCA，如果数据量不大或者对运算要求不高，不要用PCA。</p>
+</li>
+</ol>
+<p>所以，总的来说，PCA是为了数据压缩来做的，并不能保证能够提升识别率（虽然可以说PCA提取了主要信息，忽略了噪声，这样子，但是其实这个说法还是蛮不靠谱的，谁知道PCA压缩掉的是什么呢）。所以PCA应该是早期为了解决储存和计算性能不足提出来的东西，对于现在的时代来说，应该是没太大用途了。</p>
+<p>\</p>
+<p>20140505</p>
+<p>做了本周的作业，是用Kmean和PCA进行图片数据压缩。</p>
+<p>从直观来说，图片压缩的一个方法就是从256灰度中均匀地取16个，然后用最近邻方法将附近的颜色全部聚集在一起。</p>
+<p>Kmean可以看成对上述方法的改进，也就是认为均匀地取是不科学的，可能图片本身的颜色分布并不均匀，所以应该选16个最有代表性的，也就是16个k-mean的中心了。</p>
+<p>PCA压缩图片的思路跟Kmean不一样，kmean是从灰度聚集的角度入手的，本质上是减少了特征的取值的范围，而PCA是直接操作于特征的，看成将特征投影到某个方向上。</p>
+<p>\</p>
+<p>201405010</p>
+<p>这周开始讲异常检测，这个跟有监督学习很像，不同点在于样本的数量。——异常检测的正样本（异常）很少，也是因为这个原因，导致了常规的有监督学习方法（逻辑回归等）不适用。——一般有监督学习要求正负样本都很多，这样才能估计出它们之间border在什么地方。</p>
+<p>异常检测用的是另外的思路，因为正样本不多而负样本很多，所以应该先从负样本中学习出来特征，如果来了一个样本，发现跟负样本不像，那么可以认为是正样本（异常）。</p>
+<p>具体方法是选取有高斯分布的特征，通过样本的均值和方差来进行参数估计，求一个联合概率，然后选一个阈值作为分界。</p>
+<p>如何选特征：</p>
+<ol>
+<li><p>选带有高斯分布的特征，如果特征不服从高斯分布，但是是单峰的，考虑用log做一个变换。</p>
+</li>
+<li><p>当发现目前选择的特征不能很好地区分开异常的时候，研究这个出错的样本，来挖掘新的特征。</p>
+</li>
+</ol>
+<p>之后介绍了多高斯分布。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_m66cfd3f.png" alt="image"></p>
+<p>直观地说，使用多高斯分布的话，多了一个协方差上的考虑，也就是，上图2,3用高斯分布就能够比较好地进行拟合，因为之间的相关性为0.而如果像是图4，5的样子，就需要用到多高斯来进行估计了。</p>
+<p>多高斯能够自动地capture到不同特征之间的相关性，同时也需要较大的计算代价，用的时候需要权衡一下。</p>
+<p>\</p>
+<p>20140511</p>
+<p>今天将推荐系统的协同过滤算法。协同过滤算法也属于从大数据中自动学习特征的算法。</p>
+<p>这个不知道跟CNN有没有联系呢。</p>
+<p>以及中间提到了low rank的东西。等做了作业熟悉之后要串联一下这些想法。</p>
+<p>\</p>
+<p>20140515</p>
+<p>今天是最后一周了，没有编程作业。</p>
+<p>讲了一些工程上的问题：</p>
+<ol>
+<li><p>BGD->SGD->miniBGD。这里比较有意思的是认为miniBGD比SGD更快，因为miniBGD可以使用vectorize方法来加速。</p>
+</li>
+<li><p>如何调整学习率α？将数据plot出来，看图说话。</p>
+</li>
+<li><p>Online Learning，也就是有一个训练的数据流的SGD</p>
+</li>
+<li><p>MapReduce，用于应对BGD每次迭代计算代价大的问题，直接简单粗暴地Map到N个机器上跑BGD的一部分，然后reduce到一台机器上merge，做到跟BGD一样的效果。</p>
+</li>
+</ol>
+<p>下午将剩下的视频都看完了，说了两件重要的事情：</p>
+<p>Augment<br>dataset：通过轻微的变形来增加数据，注意，通过简单地增加高斯噪声是无效的。</p>
+<p>Ceiling<br>analysis：分析pipeline的每个component，看应该将改进的精力放在什么地方。</p>
+<p><img src="/img/notes%20by%20zhangll%20week%204%20and%20so%20on_html_m17e7bfea.png" alt="image"></p>
+<p>于是，到这里，结课了。</p>
+<p>每次结课都会有淡淡的忧伤呢。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+
+    <div class ="post-donate">
+      <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+           &uarr;<br>
+           
+            如果内容对您有帮助，不妨支持一下:)
+           
+        </span>
+        <br>
+      </div>
+
+      <div id="donate_guide" class="donate_bar center hidden">
+        
+          <a href="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" class="fancybox" rel="article0"       style="float:left;margin-left:25%;margin-right:2px;">
+          <img src="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" height="164px" width="164px">
+          </a>
+        
+
+      
+       <a href="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0">
+         <img src="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" height="164px" width="164px">
+       </a>
+      
+
+      </div>
+
+      <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function(){
+          $('#donate_board').addClass('hidden');
+          $('#donate_guide').removeClass('hidden');
+        }
+      </script>
+    </div>
+
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MOOC/"> #MOOC </a>
+          
+            <a href="/tags/Machine-Learning/"> #Machine Learning </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/05/29/book-note-mindmap-make-friend-with-time/">《把时间当作朋友》的思维导图</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+
+<div class="ds-share" data-thread-key="2014/05/15/mooc-machine-learning/" data-title="课堂笔记 《Machine Learning》" data-images="http://zhangliliang.com/2014/05/15/mooc-machine-learning/" data-content="http://zhangliliang.com/2014/05/15/mooc-machine-learning/" data-url="http://zhangliliang.com/2014/05/15/mooc-machine-learning/">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+
+          <!-- 评论框 -->
+          <div class="ds-thread" data-thread-key="2014/05/15/mooc-machine-learning/"
+               data-title="课堂笔记 《Machine Learning》" data-url="http://zhangliliang.com/2014/05/15/mooc-machine-learning/">
+          </div>
+        
+      </div>
+    
+  </div>
+  
+  <div style="position:relitive;float:bottom" >由于前段时间很忙，很久没有更新网站。发现多了不少评论和问题，无法一一回复。如果现在仍有问题请再次留言 :) 2016.03.29</div>
+
+
+
+          
+
+          
+        </div>
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zhang Liliang" />
+          <p class="site-author-name">Zhang Liliang</p>
+        </div>
+        <p class="site-description motion-element">On My Way to Be a Good R&D Engineer</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/zhangliliang" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/level0" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/level0" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+		
+		<div class="cc-license motion-element">
+          <a href="http://www.clustrmaps.com/map/zhangliliang.com" title="Visitor Map for zhangliliang.com"><img src="//www.clustrmaps.com/map_v2.png?u=O4it&d=oZmhivNx4M8eu2PLaeuWOb50HASEPiXS6Tih7mocqkY" /></a>
+        </div>
+		
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2016
+  
+  <span class="author"> Zhang Liliang</span>
+</div>
+
+<div class="powered-by">
+  <div style="float:left;margin-top:7px;margin-right:10px;">
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254711542'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254711542%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+   鲁ICP备15013969号
+</div>
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Clone theme 
+  <a class="theme-link" href="https://github.com/xirong/hexo-theme-next" rel="external nofollow">
+    NexT
+  </a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <!-- <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script> -->
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <!-- <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+ -->
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebarToggleMotion();
+    postsListMotion();
+    backToTopMotion();    
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+//search animate
+$(function(){
+   $('#ts-search-input').focus(function() {  //设置获得焦点时的方法，让文本框变长
+    $(this).animate({width: "150"}, 300 );  
+    $(this).val(''); //用于清空内容，可选操作
+   });
+ 
+   $('#ts-search-input').blur(function() {  //设置失去焦点时的方法，让文本框变短
+    $(this).animate({width: "70"}, 300 );
+   });
+});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebarToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+
+
+
+   <script type="text/javascript">
+    var HEXO_SIDEBAR_CONFIGURATION = 'post';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangliliang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4dd9fbea330c98acc0ff7b6538270f3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  
+</body>
+</html>

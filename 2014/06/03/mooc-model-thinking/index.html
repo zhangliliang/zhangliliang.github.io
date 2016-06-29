@@ -1,0 +1,1386 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv=”Cache-Control” content=”no-transform” />
+<meta http-equiv=”Cache-Control” content=”no-siteapp” />
+
+
+  <meta name="keywords" content=" ,MOOC, " />
+
+
+
+    <meta name="description" content="课堂笔记 《Model Thinking》,Coursera上Model Thinking的笔记 On My Way to Be a Good R&D Engineer" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+
+  <link rel="alternate" href="/atom.xml" title="在路上" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+  <title> 课堂笔记 《Model Thinking》 - 在路上 </title>
+</head>
+
+<body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://static.ixirong.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+
+    <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+
+
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">在路上</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    <div class="c-search-form-div" style="display:none;">
+      
+      
+    </div>
+    <script type="text/javascript">
+      if(isDesktop() || isTablet()){        
+        $('.c-search-form-div').css("display","inline");
+      }    
+    </script>
+
+    
+      
+      
+        <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+      
+    
+
+    <script type="text/javascript">
+      if(!isMobile()){
+         $('.menu-item-commonweal').css("display","");
+      }
+    </script>
+
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              课堂笔记 《Model Thinking》
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-06-03
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/06/03/mooc-model-thinking/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/03/mooc-model-thinking/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h2 id="Section_1_Why_Model?">Section 1 Why Model?</h2><p>Why Model?  </p>
+<blockquote>
+<ul>
+<li>intelligence citizens of the world  </li>
+<li>think more clearly  </li>
+<li>using and understanding data  </li>
+<li>using models to decide, strategize, and design  </li>
+</ul>
+</blockquote>
+<p>这里Scott教授用奥德修斯的故事作为例子说明model是用来干什么的——将我们固定在桅杆上，限制我们只能在某个范围内进行思考。<br>也就是，model是为了简化问题而存在的，本质是为了给我们的决策提供一个锚点，让我们更加容易地去排除其他因素考虑问题的解决。<br>（官方note见<a href="https://d396qusza40orc.cloudfront.net/modelthinking/Lecture%201.docx" target="_blank" rel="external">这里</a>）</p>
+<h2 id="Section_2_Segregation_and_Peer_Effects">Section 2 Segregation and Peer Effects</h2><p>现象：人们的表现会呈现趋同性。<br>比如人们的居住呈现隔离（种族隔离，收入隔离），人们跟趋向于跟自己一样的人住在一起。<br><img src="http://i.imgur.com/B6GT7Vz.png" alt=""><br>又比如在社会里面突然就发生大规模暴动，或者观看表演的人们会突然全部起来鼓掌。或者突然大家都买同一款帽子。<br><img src="http://i.imgur.com/chMp3B9.png" alt=""></p>
+<p>上面分别对应了Sorting和Peer Effect。</p>
+<blockquote>
+<ul>
+<li>Sorting：我不喜欢现在的环境，我要换到一个我喜欢的环境。</li>
+<li>Peer Effect：大家都这样做了，我也这样做吧。</li>
+</ul>
+</blockquote>
+<p>虽然最后结果从宏观的角度上来讲，都是群体趋同，但是从微观，从个体的角度讲，这两种心理几乎是完全相反的。我简单地理解为，第一种人是有着自己坚定的信念：我和大家不一样，不是我的问题，是环境的问题（中二病）；第二种人立场较模糊，也不准备改变环境，而是改变自己的意见。（墙头草）。</p>
+<p>对于Sorting，讲述了Schelling Model。</p>
+<ul>
+<li>是一个Agent Based Model（包括Agents，behaviors和outcomes三部分）。</li>
+<li><strong>有趣现象一：30%的初始容忍度，最后可能会导致70%以上的隔离：微观行动≠宏观现象</strong></li>
+<li><strong>有趣现象二：80%的初始容忍度，将不能导向稳定，人们会不断的移动。</strong></li>
+<li>使用$\frac{1}{2}\vert\frac{b}{B}-\frac{y}{Y}\vert$来计算隔离度。</li>
+</ul>
+<p>对于Peer Effect，有两个模型。</p>
+<p>Granoveor’s Model</p>
+<ul>
+<li>“尾巴带动狗”效应——先有第一个吃螃蟹的人，后来才有可能人人都来吃螃蟹。</li>
+<li>引发的两个因素可能是：<blockquote>
+<ul>
+<li>更低的触发阈值</li>
+<li>群体中阈值的多样性(variation) </li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>Standing Ovations(起立鼓掌)</p>
+<ul>
+<li>比Granoveor’s Model的表达要复杂，需要考虑，表演的质量Q，人们的阈值S，误差或者多样性（E）。以及设置了两个rules。</li>
+<li><strong>有趣现象：很棒的表演（因为有着很高的Q）和很烂的表演（人们期望变低，因而引发很低的S）都有很大可能带来掌声。</strong></li>
+<li>引发的因素可能有<blockquote>
+<ul>
+<li>更高的表演质量Q</li>
+<li>人们更低的阈值</li>
+<li>更多的Peer Effect</li>
+<li>观众的多样性</li>
+<li>celebrity，名人效应</li>
+<li>Big group，即表现会跟小伙伴们趋同</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="Section_3_Aggregation">Section 3 Aggregation</h2><p>Aggregation会带来“More is different”，即聚合后的整体不只是个体之间的简单叠加，而可能具有了个体不具有的属性和功能。比如，“湿”的感觉是有一堆水分子之间产生某种化学键的效应，才产生出来的。</p>
+<p>1.个体决策是独立的情况：<br>当Aggregation中的每个个体的决策都是独立的时候，那么最后决策的概率分布呈现的是正态分布。课上举了抛硬币的例子（个体的决策是二项分布，整体的分布会呈现正态分布）。从这里，提到了摩托罗拉的“Six Sigma”原则——即样本呈现正态分布时候，偏离均值超过6个sigma距离的样本几乎不会在实际情况中出现。下图出自<a href="http://zh.wikipedia.org/wiki/%E5%85%AD%E6%A8%99%E6%BA%96%E5%B7%AE" target="_blank" rel="external">wiki</a><br><img src="http://i.imgur.com/kkgmjaH.png" alt=""><br>具体到决策上，假设客户平均需要500根香蕉，如果知道sigma是10，那么对于VIP，预留560根香蕉。（这个老师很喜欢香蕉）</p>
+<p>2.个体决策是相关的情况：<br>当个体决策是相关的时候，情况会一下子变得很复杂，下面讲了两个模型：</p>
+<ul>
+<li>Game of Life：生存游戏，在2D空间上进行，对于每个个体有两个规则：（1）如果原来是关的，邻居里面有（不多不少的）3个邻居是开的，那么打开（2）如果原来是开的，邻居里面有2个或者3个是开的，那么继续保持开状态，否则就关掉。<br>之后也是用<a href="http://ccl.northwestern.edu/netlogo/" target="_blank" rel="external">NetLogo</a>来进行演示。大概意思是，不同的初始模式（由几个个体聚合成的），可能只有一点点改变，但是却能呈现出来很多的表现：有些是周期性变化，有些是平移，有些是像具有了生命一样随机游走。</li>
+<li>1D Cellular Automata: 上面的GoL的结果是不可穷尽的，而在GoL之前，有更加简单的1D模型。<br>如下图，对一个个体（格子），它的明亮状态只取决于自身状态以及左右个体的状态（GoL的邻居有8个，这里是2个），对于对于输出有2^8=256中编码方式。于是提出模型的作者写了一本1000页的书来穷尽地描述它们的变化。<br><img src="http://i.imgur.com/W89S4Zk.png" alt=""></li>
+</ul>
+<p>3.个体决策有偏好的时候会怎么影响群体（Aggregation Preference）<br>比如有三个个体，他们对苹果，香蕉和椰子的偏好是这样的：<br><img src="http://i.imgur.com/SQ8xx1A.png" alt=""><br>那么对于他们三个构成的群体，偏好就会变成这样：<br><img src="http://i.imgur.com/QxkEKMX.png" alt=""><br>可以看到产生了循环。结论：简单聚合个体的偏好可能会导致群体偏好产生悖论（Paradox）</p>
+<h2 id="Section_4_Decision_Models">Section 4 Decision Models</h2><p>这个章节讲的是决策。<br>决策模型的两个原则：一个是nomative，一个是positive。个人理解前者表示该模型对不同的事情具有普适性，后者表示该模型能够对决策起到帮助的作用。<br>这个章节讲了三个跟决策有关的模型：Multi-Criterion，Spatial Choice, Decision Tree。<br>都是很直观的模型，只是使用时候可能要注意一些要点。</p>
+<ul>
+<li>Multi-Criterion:需要注意到的是对于每个Criterion，每个人的评判标准是不一致的，所以需要对每个Criterion进行加权。</li>
+<li>Spatial Choise：即最近邻，需要注意的是这里的维度需要满足Spatial原则，比如，买电脑时候，价格不满足Spatial原则——其他因素不变的时候我们总是希望价格越低越好，而屏幕尺寸满足Spatial原则——其他因素不变的时候，我们对屏幕尺寸的期望是在一个固定范围内波动的。</li>
+<li>Decision Tree：这个很直观，也很有用：（1）帮助我们判断不同choice之前的收益（2）帮助我们判断一个信息对于我们决策的价值（3）当别人（或者我们自己）做出决策后，可以反推出TA（或自己）的决策趋向性（去机场碰运气换机票回家看父母的例子）</li>
+</ul>
+<p>总的来说，在这个章节的收获是：虽然有了决策模型，但是模型的参数是我们主观上面设置的，所以最重要的依然是我们怎么去看待不同Criterion之间的价值。</p>
+<h2 id="Section_5_Thinking_Electrons">Section 5 Thinking Electrons</h2><p>标题，“想一个电子一样思考”，大概意思是说，电子是不会思考的，如果我们要model人类的行为，那么也需要简化成一个简单的模型。<br>本章节讲了三类模型，Rational，Behavior，Rule Based。</p>
+<ol>
+<li>Rational: <blockquote>
+<p>即假设人类都是死理性派，对于一个事情（可以是decision或者game，前者只与自己有关，后者需要考虑到其他人），都有一个objective function，然后对其进行optimize。</p>
+</blockquote>
+</li>
+<li>Behavior：<blockquote>
+<p>Rational是不合常理的，因为通常人们都不是理性的——有时候我们是根据直觉，有时候我们并没有那么多的时间去让我们理性地思考每一件事。所以假设人们会存在偏差（bias）。有四种偏差:</p>
+<ul>
+<li>Prospect Theory:对于收益，人们趋向保守（100%给400，还是50%给1000，人们一般选前者）；对于损失，人们趋向冒险。（100%损失400，还是50%损失1000，人们一般选后者）</li>
+<li>Hyperbolic discounting：对于近期的收益会特别关心，对于未来的收益的关心程度会呈现双曲线的快速下降。（今天得到1000明天得到1005？一般会选今天就得到1000；一年后得到1000和一年零一天得到1005？一般会选一年零一天得到1005）</li>
+<li>Status Quo Bias: 改变问卷的否定时态，会带来很大的不同（你是否<strong>愿意</strong>进行器官捐赠？你是否<strong>不愿意</strong>进行器官捐赠？）</li>
+<li>Based Rate Bias：让人们连续说出两个数字，这两个数字通常会很相近。</li>
+</ul>
+<p>综上所述，Behavior模型的意思是说：它假设人们从behavior上来说是不rational的，而是由bias的。</p>
+</blockquote>
+</li>
+<li>Rule Based:<blockquote>
+<p>从某个角度来说，Rational和Behavior都可以看成是某种Rule。不过这里的Rule通常都是简单而直接的，比如Section 2介绍的Schelling Aggregation Model。又比如“tit for tat”。</p>
+</blockquote>
+</li>
+</ol>
+<p>如何选择使用模型？通常是取决于实际的情况是怎样的，然后选择跟实际情况更相符的。</p>
+<h2 id="Section_6_Categorical_and_Linear_Model">Section 6 Categorical and Linear Model</h2><ol>
+<li>Categorical model类似我们定义了很多个小盒子，然后我们把物体放到小盒子里面。这个能起到最简单的过滤作用。<blockquote>
+<p><img src="http://i.imgur.com/hc7VZ12.png" alt=""><br>将水果和零食分开，卡路里的方差会降低低很快，也就是说这个是一个合理的分类（具体用一个叫R-square的规则衡量，这里是90.2%）。</p>
+</blockquote>
+</li>
+<li>Correltaion is not Causation.这句话在这个课上又一次被强调：拥有骑马队的学校一般是好学校的原因不是因为他有骑马队，而可能是因为它有资源，所以导致了他有骑马队。（尽管只有相关性没有因果性，我们依然可以选择有骑马队的学校来就读，因为确实是好学校的概率比较大）</li>
+<li>Linear Model<blockquote>
+<p><img src="http://i.imgur.com/roR9Jmq.png" alt=""><br>评估一个线性模型的几个参数：</p>
+<ul>
+<li><strong>R-square：衡量模型的可解释性</strong></li>
+<li>Coefficient：衡量因素的重要性</li>
+<li>SE:衡量因素的偏离情况</li>
+<li><strong>P-Value：衡量因素符号翻转的几率</strong></li>
+</ul>
+</blockquote>
+</li>
+<li>从Linear到nonLinear<blockquote>
+<ul>
+<li>将函数分段，认为每段是linear</li>
+<li>对因素进行非线性变换</li>
+</ul>
+</blockquote>
+</li>
+<li>Big Coefficient vs New Reality。由于存在多峰值问题，究竟是要选择往模型中的有大系数的因数投钱了，还是往新的未知领域投钱了？</li>
+<li>所以让我再次想起来，模型是一种对现实的评估，我们需要关心的是：<blockquote>
+<ul>
+<li>模型能够解释多少实际情况呢？（对于这个章节，用的是R-square）</li>
+<li>以及模型能够帮助我们做什么？（对于这个章节，是Big Coefficient）</li>
+<li>模型的局限是什么？（对于这个章节，一个是非线性的情况，另外一个是多峰值的情况）</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h2 id="Section_7_Tipping_Points">Section 7 Tipping Points</h2><p>提到一本书，<a href="http://book.douban.com/subject/3900987/" target="_blank" rel="external">《引爆点》</a></p>
+<ul>
+<li>Kick vs Tip：Tipping的意思是在某个点突然发生跃迁——注意，指数性（爆炸性）增长跟Tipping是由区别的，前者依然是“增长”，后者是直接“跳跃”。比如“压垮骆驼的最后一根稻草”说的是tipping。<br><img src="http://i.imgur.com/5q2JXFQ.png" alt=""></li>
+<li>两个Tipping模型，Percolation Model(森林防火，银行破产的传导，谣言在社交网络的传播，<strong>创新：大量的原始积累，突然有一天就连成一条通路</strong>)；SIS Model：当一种病达到某个阈值后，才会成为传染病。</li>
+<li>区分Diffusion Model和SIS model：前者是增长，后者是跃迁（可以联想到sigmoid的loss function和SVM的loss function，后者是前者的“Tipping Version”）</li>
+<li>Tipping可以分成Direct和Contextual的，前者是引发大连锁的小事件（二战导火索），后者是改变一点环境参数而导致的大事件（比如SIS model）；还可以分成Between Class和Within Class，这个没有太细讲，大致意思是如果跃迁后状态不可知，那就是Between Class的。</li>
+<li>最后给出了Tipping的Measurement：一个是Diversity Index，另外一个是Entropy。Diversity是基于对“多样性”的衡量，Entropy是基于对“要猜多少次才能猜到”的衡量。</li>
+</ul>
+<h2 id="Section_8_Economic_Growth">Section 8 Economic Growth</h2><ul>
+<li>由于复利（compounding）的存在，收入和增长率之间呈现的是指数量级的增长（Exponential Growth）。可以用“rule of 72”来初略估计：72除以增长率，基本就是翻一番的时间。比如一个国家的GDP的年增长率为2%，那么大概72/2=36年，GDP会翻一番。</li>
+<li>Simple Growth Model：当investment和depreciation相等（Equilibrium）的时候，实现了output的最大化，也就是，会停止增长。反映出来的是，如果depreciation是线性(linear)的，那么output是凹(concave)的。</li>
+<li>Solow Growth Model：引入了Technology的变量，认为Technology的innovation能够突破原来Simple Growth Model的Equilibrium，达到一个更高的Equilibrium。</li>
+<li>《Why Nations Fail》的三个观点：<blockquote>
+<ol>
+<li>Growth requires a strong central government to protect capital and investment but that government cannot be controlled by a select few（需要中央来保护增长，同时中央不能过于“中央”）</li>
+<li>Extraction limits growth by lowering investment in innovation and capital（过早套现会限制增长）</li>
+<li>Growth requires <strong>creative destruction</strong>（科技进步，那么带来的旧产业的淘汰，和其工人的失业）</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="Section_9_Diversity_and_Innovation">Section 9 Diversity and Innovation</h2><ul>
+<li>解决一个问题取决于Perspectives和Heuristic。前者是如何定义一个问题，更好的定义（角度）会带来更少的局部最优点；后者是如何去解决问题，应用更好的搜索算法能够更快更好地找到极值点。</li>
+<li>说明Perspectives作用的一个例子：如何将纸牌游戏转换成tic-tac-toc来获得全局最优<br><img src="http://i.imgur.com/jkIRdsQ.png" alt=""></li>
+<li>Heuristic算法举例：（1）Do the Opposite(2)Big Rocks First.然而，根据No Free Lunch的理论，不存在普适的Heuristic算法。但是针对某个特定问题，会有特定的较好的Heuristic算法。</li>
+<li>Team能够通过共享信息来减少局部最优解——Team的局部最优解的集合是每个member的局部最优的交集。所以，Team能够带来Diversity，所以不容易被stuck住。</li>
+<li>Recombination:对不同的Heuristic算法进行组合能够产生多样的效果——新的Innovation是旧的东西之间的再次组合和提升。</li>
+</ul>
+<h2 id="Section_10_Markov_Processes">Section 10 Markov Processes</h2><p>Markov Processes（以下简称MP）表示的是一种经过迭代后会趋于稳定的模型。前提是该模型满足四个条件：</p>
+<ul>
+<li>有限状态</li>
+<li>固定的转移概率</li>
+<li>能够从任意状态到任意状态（不存在死状态）</li>
+<li>没有简单的互换（A B互相切换）<br>满足上面四个条件后，随着迭代MP会慢慢均衡到达Equilibrium Point，这是一种Statistical Equilibrium，即状态之间依然在不停的交互，但是位于某状态下的个体的数目已经不会变化。<br>所以，需要改变一个MP最后的Equilibrium Point，下面方法是无效的：</li>
+<li>改变初始状态</li>
+<li>改变历史</li>
+<li>改变中间转移<br>不过，这些能够<strong>加速或者延缓</strong>MP达到稳态的速度，所以还是有影响的。<br>想从根本上改变Equilibrium Point，需要改变MP的转移概率。举例：一位老师如果想学生更加喜欢他的课，那么课上突然让学生笑10分钟是没有用的，而是应该去认真备课，并且力求让学生理解课上的内容。</li>
+</ul>
+<h2 id="Section_11_Lypunov_Functions">Section 11 Lypunov Functions</h2><ol>
+<li>Lypunov Functions需要满足两个条件<ul>
+<li>存在最大值（或者最小值）</li>
+<li>每个阶段都至少增加k（或者至少减少k）</li>
+</ul>
+</li>
+<li>当一个一个模型满足Lypunov Function条件时，那么它最后会达到平衡状态。</li>
+<li>Lypunov可以解析城市的自管理现象——当大家都避免拥挤的时候，那么最后每个地方都会趋向于不那么刚刚好的情况</li>
+<li>Lypunov被外部因素影响的时候，很可能不再成立：如交换椅子符合lypunov，交换办公室则不一定——因为换了座位可能会引起第二轮交换，导致了系统一直扰动，不能进入平衡状态</li>
+<li>一个函数是Lypunov时候，可以很容易地计算出它什么时候实现均衡，但是系统有可能有多个均衡点，所以最后的均衡点不一定是最优的——比如交换水果的那个样例。</li>
+<li>Lypunov和Markov有两个主要的不同点：<ul>
+<li>多个可能的均衡点 vs 唯一的均衡点</li>
+<li>能否达到均衡受外部条件影响 vs 能否达到均衡不受外部条件影响</li>
+</ul>
+</li>
+</ol>
+<h2 id="Section_12_Cordination_and_Culture">Section 12 Cordination and Culture</h2><p>简单来说，局部的同调导致了全局上具有了多种多样的文化。</p>
+<ul>
+<li>Pure Coordination：跟身边的人同调，这符合Lyapunov，所以最后会达到均衡状态——类似之前的Schelling Model，同类人聚在一起，然后不同类型的人有明显的分开边界。</li>
+<li>Pure Cordination vs Standing Ovation：差别主要是前者如果要保持不同，损失要比后者大很多。</li>
+<li>Inefficient Coordination：说明简单的同调并不能带来最优值，比如美国拒绝使用公制计数而使用英制计数——从实际角度说，公制更加有优势，但是周围的人都用英制，也唯有用英制了。</li>
+<li>Axelrod’s Culture Model：解释了Thick Boudaries现象，系统均衡后，住的很近的两个人，要么他们很像，要么他们很不像。</li>
+<li>Bednar etal Model：教授自己带研究生做的模型，比起上一个模型，加入了Coordinate因素和Small Error，最后能够解释为什么一个群体整体来说很集中，但是存在很少的离群点的现象。 </li>
+</ul>
+<h2 id="Section_13_Path_Dependence">Section 13 Path Dependence</h2><p>讲的是一种“我当前的表现依赖于我过于的表现”的模型。跟下面的random walking截然不同。</p>
+<ul>
+<li>Urls model<ul>
+<li>Bernoulli，如果一开始取出红球，那么继续加红球。造成的结果是outcome千千万，而且出现概率都相等。</li>
+<li>Polya，如果一开始取出红球，那么我补一个蓝球。造成的结果是outcome是最后取出红蓝球的期望是一致的。</li>
+<li>上述两个模型，都不是路径依赖的。</li>
+</ul>
+</li>
+<li>Externalities：加入了外部影响，就有可能形成路径依赖了，比如事件与事件之间相互影响，那么先做哪件事后做哪件事就有差别了。</li>
+</ul>
+<h2 id="Section_14_Network">Section 14 Network</h2><p>作为IT圈的人，Network太熟悉了，内容比较少，围绕三方面展开：</p>
+<ul>
+<li>Logic： How it form? Random, Small World, Preferential Attachment(e.g. Internet).</li>
+<li>Structure: measures, e.g. Degrees, Path Length, Clustering Coefficient …</li>
+<li>Function： what it does, e.g. Six Degrees</li>
+</ul>
+<h2 id="Section_15_Randomness_and_Random_Walks">Section 15 Randomness and Random Walks</h2><p>这一章讨论的是“天赋和运气”（skill &amp; luck）。这在《思考，快与慢》的17章的“回归到平均”说的应是同一个东西。</p>
+<ul>
+<li>因为什么会产生随机性？Noise、Error、Uncertainty、Complexity。</li>
+<li>Skill-luck Model: Outcome = a*Luck + (1-a)*Skill, a in (0,1)。<br><img src="http://i.imgur.com/yyzPxYb.png" alt=""><br>模型用的第二点即上面提到的“回归到平均”：如果有一天表现很好，那么第二天表现变差的可能很大；如果有一天表现不好，第二天表现变好的可能很大；最后表现回复到个人的平均水平。</li>
+<li>The Paradox of Skill：当大家的skill都差不多的时候，胜负几乎只靠运气决定。</li>
+<li><p>Binary Random Walk，抛硬币是一个典型的二项随机游走问题，有三个结论：</p>
+<ul>
+<li>抛偶数次硬币，最后得分的期望是0</li>
+<li>对于每个得分k，随机游走都会达到k和-k无限次</li>
+<li>对于每个数字k，随机游走都有可能连续出现k次head或者k次tail</li>
+</ul>
+<p>这里再次提到了“Regression to the mean”的效应。以及否认了打球时候“hot head”的不存在。以及对“No Free Lunch”做了解释，认为“好”的标准一直改变，公司也需要充分发挥主观能动性，来对抗随机和未知。<br>还有“小数定律”（也是联想到了《思考快与慢》的章节了）：我们看到的只是全局的一部分，但是却默认地认为这就能够代表全局。</p>
+</li>
+<li>Normal Random Walk和Efficient Market Hypothesis：想说明的是，股市是一种对过于没有记忆的random walk，所以做出预测是不靠谱的。<br>当然EMH也不是绝对正确，被提出了两点质疑：Too Much Flutuation和Consistent Winner。不过随机游走也是有Consistent Winner的，只不过概率比较小。</li>
+<li>Finite Memory Random Walk:加了时间依赖，相对客观一点。</li>
+</ul>
+<h2 id="Section_16_Colonel_Blotto">Section 16 Colonel Blotto</h2><p>讲的是资源错配问题。</p>
+<ul>
+<li>这是一个零和游戏</li>
+<li>当两方资源一致时候，任何策略都可以被打败。（这里可以联系上一章的the Paradox of skill）</li>
+<li>它结合了均衡和随机：选择随机的策略，最后胜负达到一个均衡。（类似于石头剪子布）</li>
+<li>但如何一方的资源丰富，那么有可能达到必胜。而作为资源不足的一方，增加战场才有可能扭转战机。</li>
+</ul>
+<h2 id="Section_17_Prisoner’s_Dilemma">Section 17 Prisoner’s Dilemma</h2><p>囚徒困境，一个经常被提到模型。<br><img src="http://i.imgur.com/orn0CJD.png" alt=""></p>
+<ul>
+<li>从集体的角度讲，鼓励合作，从个人的角度讲，趋向背叛。</li>
+<li>该模型唯一的平衡是双方都选择背叛，该平衡称为纳什平衡（Nash Equilibrium），但是它不是帕累托最优(Pareto Efficient)的。</li>
+<li>如何在囚徒困境模型中鼓励大家合作，7个方法，前5个是自然的，后两个是人工的：<ol>
+<li>Repeated：如果人们需要重复博弈，那么趋向合作（不然会被以牙还牙）</li>
+<li>Reputation：如果合作能够带来好名声（以帮助后面的博弈），那么人们趋向合作。</li>
+<li>Networks：如果网络中的人都趋向于合作，那么采取合作会比较有利（反之亦然）</li>
+<li>Group：如果与其他组别竞争，组内合作会增加打败对方组别的胜率</li>
+<li>Kin：如果有亲缘关系，我们会考虑更多的合作</li>
+<li>Laws：通过制定法律来限制人们的背叛</li>
+<li>Incentives：通过引导来让人们实现合作</li>
+</ol>
+</li>
+<li>如果囚徒困境中的囚徒大于2，那么问题拓展为Collective Action Model，本质上跟两人的囚徒困境一样，集体鼓励合作，个人趋向背叛。（公共鱼塘问题，大家会趋向过度捕捞，最终导致资源耗尽）</li>
+<li>应对Collective Action Model问题，让人们趋于合作的解决方法的思路大致也是上文的7点，作者举了几个例子，其中一个是通过分区或者轮流使用公共区来解决放牧的问题。然后提到没有方法是万能的，需要具体问题具体分析。</li>
+</ul>
+<h2 id="Section_18_Mechanism_Design">Section 18 Mechanism Design</h2><p>这章感觉讲得有点虚，理论大于实际。</p>
+<ul>
+<li>Mechanism Design是说通过设计以下三点来推动项目的实施：<ol>
+<li>The rules of the game</li>
+<li>The actions people can take</li>
+<li>Payoffs associated with the actions</li>
+</ol>
+</li>
+<li>好的Mechanism Design能够对付Hidden Action和Hidden Information</li>
+<li>例子一：根据绩效进行鼓励（根据生产出来多少好的产品来给工资）</li>
+<li>例子二：通过限定工作总量来区分好跟坏的工程师（假设好工程师同等强度下，付出更少）</li>
+<li>例子三，拍卖会：19min，举了三种拍卖方式，Ascdending Price, Second Price，Seal Price。在理性情况下，这三者起到的效果是一致的——出价最高的出价人能够用1/2的心理价位获得自己想要的商品。</li>
+<li>例子四，公共项目：用Pivot Mechanism，能够让人们趋向报出真实的心理价位。</li>
+<li><p>Mechanism Design的目标有四：</p>
+<ol>
+<li>Efficient：项目是有效的，能够有益处的</li>
+<li>Always Join：大家都积极参与，不需要强迫</li>
+<li>Incentive Compatible：大家都会趋向真实报价</li>
+<li>Balanced：项目最后能够实行</li>
+</ol>
+<p>同时满足上述四者的Mechanism是不存在，比如Pivot Mechanism就不满足第四条。</p>
+</li>
+</ul>
+<h2 id="Section_19_Learning_Models:_Replicator_Dynamics">Section 19 Learning Models: Replicator Dynamics</h2><p>Replicator Dynamics认为人们会学习回报（payoff）比较高的人，于是整个种群呈现一种往优势发展的趋势。</p>
+<ul>
+<li>主要考虑的因素有两个，使用某种策略的人的比例，以及使用该策略带来的回报。</li>
+<li>直观来说，使用某种策略的人越多，那么后续使用该策略的人也会很多，如果某个策略回报比较大，那么后续使用该策略的人也会变多<br><img src="http://i.imgur.com/dzDvwLS.png" alt=""></li>
+<li>案例1，从鞠躬到握手。最后人们会趋向于握手，达到最优解。</li>
+<li>案例2，从小破车到SUV。最后人们会趋向SUV，达到的却不是最优解。说明了Replicator Dynamic在学习方面的局限性。</li>
+<li><p>Fisher’s Theorem融合了三个模型：</p>
+<ul>
+<li>There is no cardinal</li>
+<li>Rugged Landscape</li>
+<li>Replicator dynamics</li>
+</ul>
+<p>得到的结论是，种群内差异越大，进化越快。</p>
+</li>
+<li>Fisher vs 6sigma：适用于不同的情况，前者适用于变化的环境，后者适用于不变的环境。作者在这里对谚语进行了讽刺：之所以存在相悖的谚语，是因为使用者脱离语境和上下文。No Free Lunch决定了世界上没有万金油方法，需要结合问题具体分析。</li>
+</ul>
+<h2 id="Section_20_Prediction_and_the_Many_Model_Thinker">Section 20 Prediction and the Many Model Thinker</h2><p>本课程的最后一章。</p>
+<ul>
+<li>目前学到了用于做Predict的模型有三个：<ol>
+<li>Categories</li>
+<li>Linear Models</li>
+<li>Markov Models</li>
+</ol>
+</li>
+<li>Diversity Prediction Theorem告诉我们，用多样的策略，能够加强predict的准确度。其公式是$Crowd’s Error = Average Error - Diversity$</li>
+<li>根据Diversity Prediction Theorem我们可以总结出2点：<ol>
+<li>集体的智慧来自一群明智但思考角度不同的人</li>
+<li>集体的疯狂来自一群愚蠢但思考角度雷同的人</li>
+</ol>
+</li>
+<li>最后又回顾了各种模型，以及强调了不仅要培养模型思维，还要培养多模型思维，最后提到，本课只是model的入门课，有兴趣的人需要学习更多的model来充实内容</li>
+</ul>
+<p>本课程结束。  </p>
+
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+
+    <div class ="post-donate">
+      <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+           &uarr;<br>
+           
+            如果内容对您有帮助，不妨支持一下:)
+           
+        </span>
+        <br>
+      </div>
+
+      <div id="donate_guide" class="donate_bar center hidden">
+        
+          <a href="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" class="fancybox" rel="article0"       style="float:left;margin-left:25%;margin-right:2px;">
+          <img src="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" height="164px" width="164px">
+          </a>
+        
+
+      
+       <a href="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0">
+         <img src="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" height="164px" width="164px">
+       </a>
+      
+
+      </div>
+
+      <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function(){
+          $('#donate_board').addClass('hidden');
+          $('#donate_guide').removeClass('hidden');
+        }
+      </script>
+    </div>
+
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MOOC/"> #MOOC </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/06/05/about-git/">关于git</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/06/03/mooc-get-data/">Note@Getting and Cleaning Data</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+
+<div class="ds-share" data-thread-key="2014/06/03/mooc-model-thinking/" data-title="课堂笔记 《Model Thinking》" data-images="http://zhangliliang.com/2014/06/03/mooc-model-thinking/" data-content="http://zhangliliang.com/2014/06/03/mooc-model-thinking/" data-url="http://zhangliliang.com/2014/06/03/mooc-model-thinking/">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+
+          <!-- 评论框 -->
+          <div class="ds-thread" data-thread-key="2014/06/03/mooc-model-thinking/"
+               data-title="课堂笔记 《Model Thinking》" data-url="http://zhangliliang.com/2014/06/03/mooc-model-thinking/">
+          </div>
+        
+      </div>
+    
+  </div>
+  
+  <div style="position:relitive;float:bottom" >由于前段时间很忙，很久没有更新网站。发现多了不少评论和问题，无法一一回复。如果现在仍有问题请再次留言 :) 2016.03.29</div>
+
+
+
+          
+
+          
+        </div>
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zhang Liliang" />
+          <p class="site-author-name">Zhang Liliang</p>
+        </div>
+        <p class="site-description motion-element">On My Way to Be a Good R&D Engineer</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/zhangliliang" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/level0" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/level0" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+		
+		<div class="cc-license motion-element">
+          <a href="http://www.clustrmaps.com/map/zhangliliang.com" title="Visitor Map for zhangliliang.com"><img src="//www.clustrmaps.com/map_v2.png?u=O4it&d=oZmhivNx4M8eu2PLaeuWOb50HASEPiXS6Tih7mocqkY" /></a>
+        </div>
+		
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_1_Why_Model?"><span class="nav-number">1.</span> <span class="nav-text">Section 1 Why Model?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_2_Segregation_and_Peer_Effects"><span class="nav-number">2.</span> <span class="nav-text">Section 2 Segregation and Peer Effects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_3_Aggregation"><span class="nav-number">3.</span> <span class="nav-text">Section 3 Aggregation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_4_Decision_Models"><span class="nav-number">4.</span> <span class="nav-text">Section 4 Decision Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_5_Thinking_Electrons"><span class="nav-number">5.</span> <span class="nav-text">Section 5 Thinking Electrons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_6_Categorical_and_Linear_Model"><span class="nav-number">6.</span> <span class="nav-text">Section 6 Categorical and Linear Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_7_Tipping_Points"><span class="nav-number">7.</span> <span class="nav-text">Section 7 Tipping Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_8_Economic_Growth"><span class="nav-number">8.</span> <span class="nav-text">Section 8 Economic Growth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_9_Diversity_and_Innovation"><span class="nav-number">9.</span> <span class="nav-text">Section 9 Diversity and Innovation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_10_Markov_Processes"><span class="nav-number">10.</span> <span class="nav-text">Section 10 Markov Processes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_11_Lypunov_Functions"><span class="nav-number">11.</span> <span class="nav-text">Section 11 Lypunov Functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_12_Cordination_and_Culture"><span class="nav-number">12.</span> <span class="nav-text">Section 12 Cordination and Culture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_13_Path_Dependence"><span class="nav-number">13.</span> <span class="nav-text">Section 13 Path Dependence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_14_Network"><span class="nav-number">14.</span> <span class="nav-text">Section 14 Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_15_Randomness_and_Random_Walks"><span class="nav-number">15.</span> <span class="nav-text">Section 15 Randomness and Random Walks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_16_Colonel_Blotto"><span class="nav-number">16.</span> <span class="nav-text">Section 16 Colonel Blotto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_17_Prisoner’s_Dilemma"><span class="nav-number">17.</span> <span class="nav-text">Section 17 Prisoner’s Dilemma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_18_Mechanism_Design"><span class="nav-number">18.</span> <span class="nav-text">Section 18 Mechanism Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_19_Learning_Models:_Replicator_Dynamics"><span class="nav-number">19.</span> <span class="nav-text">Section 19 Learning Models: Replicator Dynamics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Section_20_Prediction_and_the_Many_Model_Thinker"><span class="nav-number">20.</span> <span class="nav-text">Section 20 Prediction and the Many Model Thinker</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2016
+  
+  <span class="author"> Zhang Liliang</span>
+</div>
+
+<div class="powered-by">
+  <div style="float:left;margin-top:7px;margin-right:10px;">
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254711542'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254711542%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+   鲁ICP备15013969号
+</div>
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Clone theme 
+  <a class="theme-link" href="https://github.com/xirong/hexo-theme-next" rel="external nofollow">
+    NexT
+  </a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <!-- <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script> -->
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <!-- <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+ -->
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebarToggleMotion();
+    postsListMotion();
+    backToTopMotion();    
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+//search animate
+$(function(){
+   $('#ts-search-input').focus(function() {  //设置获得焦点时的方法，让文本框变长
+    $(this).animate({width: "150"}, 300 );  
+    $(this).val(''); //用于清空内容，可选操作
+   });
+ 
+   $('#ts-search-input').blur(function() {  //设置失去焦点时的方法，让文本框变短
+    $(this).animate({width: "70"}, 300 );
+   });
+});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebarToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+
+
+
+   <script type="text/javascript">
+    var HEXO_SIDEBAR_CONFIGURATION = 'post';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangliliang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4dd9fbea330c98acc0ff7b6538270f3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  
+</body>
+</html>

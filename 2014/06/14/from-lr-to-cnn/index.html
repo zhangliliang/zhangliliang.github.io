@@ -1,0 +1,1202 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv=”Cache-Control” content=”no-transform” />
+<meta http-equiv=”Cache-Control” content=”no-siteapp” />
+
+
+  <meta name="keywords" content=" ,CNN,Computer Vision,Machine Learning, " />
+
+
+
+    <meta name="description" content="从线性分类器到卷积神经网络,本文旨在梳理和总结个人在这一年CV学习过程中对各分类器（从线性分类器到最近的卷积神经网络）的发展的理解。 On My Way to Be a Good R&D Engineer" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+
+  <link rel="alternate" href="/atom.xml" title="在路上" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+  <title> 从线性分类器到卷积神经网络 - 在路上 </title>
+</head>
+
+<body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://static.ixirong.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+
+    <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+
+
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">在路上</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    <div class="c-search-form-div" style="display:none;">
+      
+      
+    </div>
+    <script type="text/javascript">
+      if(isDesktop() || isTablet()){        
+        $('.c-search-form-div').css("display","inline");
+      }    
+    </script>
+
+    
+      
+      
+        <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+      
+    
+      
+      
+        <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          关于
+        </a>
+      </li>
+      
+    
+
+    <script type="text/javascript">
+      if(!isMobile()){
+         $('.menu-item-commonweal').css("display","");
+      }
+    </script>
+
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              从线性分类器到卷积神经网络
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-06-14
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/06/14/from-lr-to-cnn/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/14/from-lr-to-cnn/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h2 id="前言">前言</h2><p>本文大致分成两大部分，第一部分尝试将本文涉及的分类器统一到神经元类模型中，第二部分阐述卷积神经网络（CNN）的发展简述和目前的相关工作。<br>本文涉及的分类器（分类方法）有：</p>
+<ul>
+<li>线性回归</li>
+<li>逻辑回归（即神经元模型）</li>
+<li>神经网络（NN）</li>
+<li>支持向量机（SVM）</li>
+<li>卷积神经网络（CNN）<br>从神经元的角度来看，上述分类器都可以看成神经元的一部分或者神经元组成的网络结构。</li>
+</ul>
+<h2 id="各分类器简述">各分类器简述</h2><h3 id="逻辑回归">逻辑回归</h3><p>说逻辑回归之前需要简述一下线性回归。<br><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/438px-Linear_regression.svg.png" alt=""><br><small>图1 单变量的线性回归</small></p>
+<p>图1中描述了一个单变量的线性回归模型：蓝点代表自变量x的分布——显然x呈现线性分布。于是我们可以用下面的式子对其进行拟合，即我们的目标函数可以写成:</p>
+<blockquote>
+<p>$\hat{y}=\omega x+b$</p>
+</blockquote>
+<p>从单变量到多变量模型，需要将$x$变成向量$\vec{x}$，同时权重$\omega$也需要变成向量$\vec{\omega}$。</p>
+<blockquote>
+<p>$\hat{y}=\vec{\omega}\cdot\vec{x}+b$</p>
+</blockquote>
+<p>而一般线性回归的损失函数会用欧氏距离来进行衡量，即常说的最小二乘法，单个样本的损失函数可以写成：</p>
+<blockquote>
+<p>$\varepsilon  = \frac{1}{2}{(y-\hat{y} )}^{2}$</p>
+</blockquote>
+<p>而逻辑回归，可以简单理解成线性回归的结果加上了一个<a href="http://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="external">sigmoid函数</a>。<br><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png" alt=""><br><small>图2 sigmoid 函数图像</small></p>
+<p>从本质上来说，加上sigmoid函数的目的在于能够将函数输出的值域从$(-\infty, \infty)$映射到$(0,1)$之间，于是可以说逻辑回归的输出能够代表一个事件发生的<strong>概率</strong>。<br>逻辑分类的目标函数和单样本损失函数是：</p>
+<blockquote>
+<p>$\hat{y}=sigmoid(\vec{w}\cdot\vec{x}+b)$<br>$\varepsilon=-ylog(\hat{y})-(1-y)log(1-\hat{y})$</p>
+</blockquote>
+<p>这里为何要使用一个复杂的损失函数这构造了一个<strong>凸函数</strong>，而如果直接使用最小二乘进行定义，损失函数会变成非凸函数。</p>
+<p>实际上逻辑回归模型虽然名字带有<strong>回归</strong>，实际上一般用于二<strong>分类</strong>问题。即对$\hat{y}$设置一个阈值（一般是0.5），便实现了二分类问题。</p>
+<p><strong>而逻辑回归模型的另外一个名称为神经元模型——即我们认为大脑的神经元有着像上述模型一样的结构：一个神经元会根据与它相连的神经元的输入（$x$）做出反应，决定自身的激活程度（一般用sigmoid函数衡量激活程度），并将激活后的数值（$y$）输出到其他神经元。</strong><br><img src="http://deeplearning.stanford.edu/wiki/images/thumb/3/3d/SingleNeuron.png/300px-SingleNeuron.png" alt=""><br><small>图3 逻辑回归模型，即单个的神经元模型</small></p>
+<h3 id="神经网络（Neural_Network，简称NN）">神经网络（Neural Network，简称NN）</h3><p>逻辑回归的决策平面是线性的，所以，它一般只能够解决样本是<strong>线性可分</strong>的情况。<br>如果样本呈现非线性的时候，我们可以引入<a href="http://en.wikipedia.org/wiki/Polynomial_regression" target="_blank" rel="external">多项式回归</a>。<br><img src="http://hexo-pic-zhangliliang.qiniudn.com/polynomial%20regression.png" alt=""><br><small>图4 多项式回归解决样本线性不可分的情况，图片来自Andrew Ng的<a href="https://www.coursera.org/course/ml" target="_blank" rel="external">Machine Learning课程的课件</a></small></p>
+<p>其实，多项式回归也可以看成是线性回归或者逻辑回归的一个特例——将线性回归或者逻辑回归的特征$x$转化为${x}^{2}, {x}^{3}…$等非线性的特征组合，然后对其进行线性的拟合。<br>多项式回归虽然能够解决非线性问题，但需要<strong>人工</strong>构造非线性的特征，那么，是否有一种模型，既能够应付样本非线性可分的情况，又同时能够<strong>自动</strong>构造非线性的特征呢？<br>答案是有的，这个模型就是<a href="http://deeplearning.stanford.edu/wiki/index.php/Neural_Networks" target="_blank" rel="external">神经网络</a>。<br><img src="http://deeplearning.stanford.edu/wiki/images/thumb/9/99/Network331.png/400px-Network331.png" alt=""><br><small>图5 带一个隐层的神经网络模型</small></p>
+<p>如图5所示，每个圆圈都是一个神经元（或者说是一个逻辑回归模型）。所以神经网络可以看成“线性组合-非线性激活函数-线性组合-非线性激活函数…”这样的较为复杂网络结构，它的决策面是复杂的，于是能够适应样本非线性可分的情况。<br>另一方面，图5中中间一列的橙色神经元构成的层次我们成为隐层。我们认为<strong>隐层的神经元对原始特征进行了组合，并提取出来了新的特征，而这个过程是模型在训练过程中自动“学习”出来的。</strong><br>神经网络的fomulation相对较为复杂，已经超出本文的范围，可参考<a href="http://deeplearning.stanford.edu/wiki/index.php/Neural_Networks" target="_blank" rel="external">Standford的深度学习教程</a></p>
+<h3 id="支持向量机（简称SVM）">支持向量机（简称SVM）</h3><p>神经网络的出现一度引起研究热潮，但神经网络有它的缺点：</p>
+<ul>
+<li>一般来说需要大量的训练样本</li>
+<li>代价函数边界复杂，非凸，存在多个局部最优值。</li>
+<li>参数意义模糊，比如隐层的神经元个数应该取多少一直没有定论。</li>
+<li>浅层神经网络对于特征学习的表达能力有限。</li>
+<li>深层神经网络的参数繁多，一方面容易导致过拟合问题，另一方面因为训练时间过长而导致不可学习。<br>于是，在上世纪90年代<a href="http://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="external">SVM</a>被提出来后，神经网络一度衰落了。<br>那么SVM是什么？<br>SVM，更准确的说是L-SVM，本质上依然是一个线性分类器，SVM的核心思想在于它的分类准则——最大间隔（max margin）.<br><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Svm_max_sep_hyperplane_with_margin.png/220px-Svm_max_sep_hyperplane_with_margin.png" alt=""><br><small>图6 L-SVM本质上是最大分类间隔的线性分类器</small></li>
+</ul>
+<p>同为线性分类器的拓展，逻辑回归和L-SVM有着千丝万缕的关系，Andrew Ng的课件有一张图很清晰地把这两者的代价函数联系起来了（见图7）。<br><img src="http://hexo-pic-zhangliliang.qiniudn.com/SVMvsLogistic.png" alt=""><br><small>图7 L-SVM和逻辑回归的代价函数对比，SVM的有一个明显的转折点</small></p>
+<p>由于L-SVM是线性分类器，所以不能解决样本线性不可分的问题。于是后来人们引入了核函数的概念，于是得到了K-SVM（K是Kernel的意思）。从本质上讲，核函数是用于将原始特征映射到高维的特征空间中去，并认为在高为特征空间中能够实现线性可分。个人认为，这个跟多项式回归的思想是类似的，只不过核函数涵括的范围更加广，以及形式上更加优雅，使得它能够避免维数灾难。<br><img src="http://img.my.csdn.net/uploads/201304/03/1364952814_3505.gif" alt=""><br><small>图8 Kernel能够对特征进行非线性映射(图片from pluskid)</small></p>
+<p>SVM比起神经网络有着以下的优点：</p>
+<ul>
+<li>代价函数是凸函数，存在全局最优值。</li>
+<li>能够应付小样本集的情况</li>
+<li>不容易过拟合，并且有着不错的泛化性能和鲁棒性</li>
+<li>核函数的引入，解决了非线性问题，同时还避免了维数灾难</li>
+</ul>
+<p>更多关于SVM的内容可以参考July的这篇文章：<a href="http://blog.csdn.net/v_july_v/article/details/7624837" target="_blank" rel="external">支持向量机通俗导论（理解SVM的三层境界）</a></p>
+<p>然而，其实我们依然可以将SVM看成一种特殊的神经元模型：</p>
+<ol>
+<li>L-SVM本质上跟单神经元（即逻辑回归）模型的最大差别，只是代价函数的不同，所以可以将SVM也理解成一种神经元，只不过它的激活函数不是sigmoid函数，而是SVM独有的一种激活函数的定义方法。</li>
+<li>K-SVM只是比起L-SVM多了一个负责用于非线性变换的核函数，这个跟神经网络的隐层的思想也是一脉相承的。所以K-SVM实际上是两层的神经元网络结构：第一层负责非线性变换，第二层负责回归。</li>
+<li><a href="http://www.cnki.com.cn/Article/CJFDTotal-JSJX200207003.htm" target="_blank" rel="external">《基于核函数的SVM机与三层前向神经网络的关系》</a>一文中，认为这两者从表达性来说是等价的。（注：这里的“三层前向神经网络”实际上是带一个隐层的神经网络，说是三层是因为它把网络的输入也看成一个层。）</li>
+</ol>
+<h2 id="卷积神经网络">卷积神经网络</h2><p>近年来，神经网络又重新兴盛起来了。尤以“卷积神经网络”为其代表。于是本文下面的篇幅主要围绕卷积神经网络进行展开。</p>
+<h3 id="生物学基础">生物学基础</h3><p>引自<a href="http://blog.csdn.net/zouxy09/article/details/8781543" target="_blank" rel="external">Deep Learning（深度学习）学习笔记整理系列之（七）</a>。<br>1962年Hubel和Wiesel通过对猫视觉皮层细胞的研究，提出了感受野(receptive field)的概念，1984年日本学者Fukushima基于感受野概念提出的神经认知机(neocognitron)可以看作是卷积神经网络的第一个实现网络，也是感受野概念在人工神经网络领域的首次应用。神经认知机将一个视觉模式分解成许多子模式（特征），然后进入分层递阶式相连的特征平面进行处理，它试图将视觉系统模型化，使其能够在即使物体有位移或轻微变形的时候，也能完成识别。<br>通常神经认知机包含两类神经元，即承担<strong>特征抽取的S-元</strong>和<strong>抗变形的C-元</strong>。S-元中涉及两个重要参数，即感受野与阈值参数，前者确定输入连接的数目，后者则控制对特征子模式的反应程度。许多学者一直致力于提高神经认知机的性能的研究：在传统的神经认知机中，每个S-元的感光区中由C-元带来的视觉模糊量呈正态分布。如果感光区的边缘所产生的模糊效果要比中央来得大，S-元将会接受这种非正态模糊所导致的更大的变形容忍性。我们希望得到的是，训练模式与变形刺激模式在感受野的边缘与其中心所产生的效果之间的差异变得越来越大。为了有效地形成这种非正态模糊，Fukushima提出了带双C-元层的改进型神经认知机。</p>
+<h3 id="基本的网络结构">基本的网络结构</h3><p>一个较为出名的CNN结构为LeNet5，它的demo可以参看这个<a href="http://yann.lecun.com/exdb/lenet/" target="_blank" rel="external">网站</a>。图9是LeNet的结构示意图。<br><img src="http://img.blog.csdn.net/20130525142906991" alt=""><br><small>图9 LeNet5的网络结构示意图</small></p>
+<p>图中的Convolutions对应了上一段说的S-元，Subsampling对应了上一段中说的C-元。<br>对于Convolution层的每个神经元，它们的权值都是共享的，这样做的好处是大大减少了神经网络的参数个数。<br>对于Sampling层的每个神经元，它们是上一层Convolution层的局部范围的均值(或者最大值)，能够有效地提供局部的平移和旋转不变性。</p>
+<h3 id="为何神经网络重新兴起？">为何神经网络重新兴起？</h3><p>卷积神经网络属于一种深度的神经网络，如上文所说，深度神经网络在之前是不可计算的，主要是由于网络层次变深后会导致下面问题：</p>
+<blockquote>
+<ol>
+<li>由于网络参数增多，导致了严重的过拟合现象</li>
+<li>在训练过程中，对深度网络使用BP算法传播时候梯度迅速减少，导致前面的网络得不到训练，网络难以收敛。</li>
+</ol>
+</blockquote>
+<p>而这两个问题在目前都得到了较好的解决：</p>
+<blockquote>
+<ol>
+<li>共享权值：即上文提到的卷积层的卷积核权值共享，大大减少了网络中参数的数量级。</li>
+<li>加大数据量：一个是通过众包的方式来增加样本的量级，比如，目前ImageNet已经有了120万的带标注的图片数据。另一个是通过对已有的样本进行随机截取、局部扰动、小角度扭动等方法，来倍增已有的样本数。</li>
+<li>改变激活函数：使用<a href="http://en.wikipedia.org/wiki/Rectifier_(neural_networks" target="_blank" rel="external">ReLU</a>)作为激活函数，由于ReLU的导数对于正数输入来说恒为1，能够很好地将梯度传到位于前面的网络当中。</li>
+<li>Dropout机制：Hinton在2012提出了<a href="http://arxiv.org/abs/1207.0580" target="_blank" rel="external">Dropout机制</a>，能够在训练过程中将通过随机禁止一半的神经元被修改，避免了过拟合的现象。</li>
+<li>GPU编程：使用GPU进行运算，比起CPU时代运算性能有了数量级的提升。</li>
+</ol>
+</blockquote>
+<p>上述问题得到有效解决后，神经网络的优势就得到充分的显现了：</p>
+<blockquote>
+<ol>
+<li>复杂模型带来的强大的表达能力</li>
+<li>有监督的自动特征提取</li>
+</ol>
+</blockquote>
+<p>于是神经网络能够得到重新兴起，也就可以解释了。下文会选取一些样例来说明神经网络的强大之处。</p>
+<h3 id="CNN样例1_AlexNet">CNN样例1 AlexNet</h3><p>在ImageNet举办的大规模图像识别比赛ILSVRC2012中分类比赛中，Hinton的学生Alex搭建了一个8层的CNN，最终top-5的漏报率是16%，抛离而第二名的27%整整有11个百分点。<br><img src="http://hexo-pic-zhangliliang.qiniudn.com/alexnet2012.png" alt=""><br><small>图10 AlexNet的CNN结构，包括5个卷积层，和3个全连接层，最后一个softmax分类器</small></p>
+<p>这个网络中用到的技术有：</p>
+<ul>
+<li>ReLU激活函数</li>
+<li>多GPU编程</li>
+<li>局部正则化（Local Response Normalization）</li>
+<li>重叠的下采样（Overlapping Pooling）</li>
+<li>通过随机截取和PCA来增加数据</li>
+<li>Dropout</li>
+</ul>
+<h3 id="CNN样例2_deconvnet">CNN样例2 deconvnet</h3><p>在下一年的比赛ILSVRC2013中，在同样的数据集同样的任务下，Matthew进一步将漏报率降到了11%。他使用了一个被命名为“Deconvolutional Network”（简称deconvnet）的技术。<br>Matthew的核心工作在于尝试将CNN学习出来的特征映射回原图片，来对每个卷积层最具有判别性的部分实现可视化——也就是，观察CNN在卷积层中学习到了什么。<br><img src="http://hexo-pic-zhangliliang.qiniudn.com/deconvnet.png" alt=""><br><small>图11 deconvnet的思想是将网络的输出还原成输入</small></p>
+<h3 id="CNN样例3_DeepPose">CNN样例3 DeepPose</h3><p>DeepPose的贡献在于它对CNN使用了级联的思想：首先，可以用第一层CNN大致定位出人物的关节位置，然后使用反复使用第二层神经网络对第一层网络进行微调，以达到精细定位的目的。<br>从另外一个角度，这个工作也说明了，CNN不仅能够应付分类问题，也能够应付定位的问题。<br><img src="http://hexo-pic-zhangliliang.qiniudn.com/deeppose.png" alt=""><br><small>图12 DeepPose通过级联地使用CNN来达到精细定位关节的位置</small></p>
+<h3 id="CNN样例4_CNN_vs_人工特征">CNN样例4 CNN vs 人工特征</h3><p><a href="http://arxiv.org/abs/1403.6382" target="_blank" rel="external">CNN Features off-the-shelf: an Astounding Baseline for Recognition</a><br>该工作旨在验证CNN提取出来的特征是否有效，于是作者做了这样的一个实验：将在ILSVRC2013的分类+定位比赛中获胜的OverFeat团队使用CNN提取出来的特征，加上一个L-SVM后构成了一个分类器，去跟各个物体分类的数据集上目前最好(state-of-the-art)的方法进行比较，结果几乎取得了全面的优胜。</p>
+<h2 id="总结">总结</h2><p>本文对数个分类器模型进行了介绍，并尝试统一到神经元网络模型的框架之中。<br>神经元网络模型的发展一直发生停滞，只是在中途有着不同的发展方向和重点。<br>神经元网络模型是个极其有效的模型，近年来由于样本数量和计算性能都得到了几何量级的提高，CNN这一深度框架得以发挥它的优势，在计算机视觉的数个领域都取得了不菲的成就。<br>目前来说，对CNN本身的研究还不够深入，CNN效果虽然优秀，但对于我们来说依然是一个黑盒子。弄清楚这个黑盒子的构造，从而更好地去改进它，会是一个相当重要的工作。</p>
+<h2 id="参考">参考</h2><ol>
+<li><a href="https://www.coursera.org/course/ml" target="_blank" rel="external">Machine Learning@Coursera</a></li>
+<li><a href="http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial" target="_blank" rel="external">UFLDL Tutorial</a></li>
+<li><a href="http://blog.csdn.net/v_july_v/article/details/7624837" target="_blank" rel="external">支持向量机通俗导论（理解SVM的三层境界）</a></li>
+<li><a href="http://blog.pluskid.org/?page_id=683" target="_blank" rel="external">支持向量机系列 from pluskid</a></li>
+<li>基于核函数的SVM机与三层前向神经网络的关系,张铃,计算机学报，vol.25,No.7,July 2012</li>
+<li><a href="http://blog.csdn.net/zouxy09/article/details/8781543" target="_blank" rel="external">Deep Learning（深度学习）学习笔记整理系列之（七）</a></li>
+<li>ImageNet Classification with Deep Convolutional Neural Networks,Alex Krizhevsky.etc,NIPS2012</li>
+<li>Visualizing and Understanding Convolutional Networks,Matthew D. Zeiler,arXiv:1311.2901v3 [cs.CV] 28 Nov 2013</li>
+<li>DeepPose: Human Pose Estimation via Deep Neural Networks,arXiv:1312.4659v1 [cs.CV] 17 Dec 2013</li>
+<li>CNN Features off-the-shelf: an Astounding Baseline for Recognition,arXiv:1403.6382v3 [cs.CV] 12 May 2014</li>
+</ol>
+
+      
+    </div>
+
+    <div class="post-footer">
+
+<! -- 添加捐赠图标 -->
+    
+    
+
+    <div class ="post-donate">
+      <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="Donate 打赏"></a>
+        <span class="donate_txt">
+           &uarr;<br>
+           
+            如果内容对您有帮助，不妨支持一下:)
+           
+        </span>
+        <br>
+      </div>
+
+      <div id="donate_guide" class="donate_bar center hidden">
+        
+          <a href="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" class="fancybox" rel="article0"       style="float:left;margin-left:25%;margin-right:2px;">
+          <img src="http://7j1yz3.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏" height="164px" width="164px">
+          </a>
+        
+
+      
+       <a href="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0">
+         <img src="http://7j1yz3.com1.z0.glb.clouddn.com/wechat.jpg" title="微信打赏" height="164px" width="164px">
+       </a>
+      
+
+      </div>
+
+      <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function(){
+          $('#donate_board').addClass('hidden');
+          $('#donate_guide').removeClass('hidden');
+        }
+      </script>
+    </div>
+
+    
+
+<! -- end 添加捐赠图标 -->
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/"> #CNN </a>
+          
+            <a href="/tags/Computer-Vision/"> #Computer Vision </a>
+          
+            <a href="/tags/Machine-Learning/"> #Machine Learning </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/06/18/about-nn/">关于神经网络</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/06/11/about-tesseract/">关于tesseract</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+
+<div class="ds-share" data-thread-key="2014/06/14/from-lr-to-cnn/" data-title="从线性分类器到卷积神经网络" data-images="http://zhangliliang.com/2014/06/14/from-lr-to-cnn/" data-content="http://zhangliliang.com/2014/06/14/from-lr-to-cnn/" data-url="http://zhangliliang.com/2014/06/14/from-lr-to-cnn/">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+
+          <!-- 评论框 -->
+          <div class="ds-thread" data-thread-key="2014/06/14/from-lr-to-cnn/"
+               data-title="从线性分类器到卷积神经网络" data-url="http://zhangliliang.com/2014/06/14/from-lr-to-cnn/">
+          </div>
+        
+      </div>
+    
+  </div>
+  
+  <div style="position:relitive;float:bottom" >由于前段时间很忙，很久没有更新网站。发现多了不少评论和问题，无法一一回复。如果现在仍有问题请再次留言 :) 2016.03.29</div>
+
+
+
+          
+
+          
+        </div>
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Zhang Liliang" />
+          <p class="site-author-name">Zhang Liliang</p>
+        </div>
+        <p class="site-description motion-element">On My Way to Be a Good R&D Engineer</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/zhangliliang" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/level0" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.zhihu.com/people/level0" target="_blank">ZhiHu</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+		
+		<div class="cc-license motion-element">
+          <a href="http://www.clustrmaps.com/map/zhangliliang.com" title="Visitor Map for zhangliliang.com"><img src="//www.clustrmaps.com/map_v2.png?u=O4it&d=oZmhivNx4M8eu2PLaeuWOb50HASEPiXS6Tih7mocqkY" /></a>
+        </div>
+		
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各分类器简述"><span class="nav-number">2.</span> <span class="nav-text">各分类器简述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-number">2.1.</span> <span class="nav-text">逻辑回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#神经网络（Neural_Network，简称NN）"><span class="nav-number">2.2.</span> <span class="nav-text">神经网络（Neural Network，简称NN）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持向量机（简称SVM）"><span class="nav-number">2.3.</span> <span class="nav-text">支持向量机（简称SVM）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积神经网络"><span class="nav-number">3.</span> <span class="nav-text">卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生物学基础"><span class="nav-number">3.1.</span> <span class="nav-text">生物学基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本的网络结构"><span class="nav-number">3.2.</span> <span class="nav-text">基本的网络结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为何神经网络重新兴起？"><span class="nav-number">3.3.</span> <span class="nav-text">为何神经网络重新兴起？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN样例1_AlexNet"><span class="nav-number">3.4.</span> <span class="nav-text">CNN样例1 AlexNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN样例2_deconvnet"><span class="nav-number">3.5.</span> <span class="nav-text">CNN样例2 deconvnet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN样例3_DeepPose"><span class="nav-number">3.6.</span> <span class="nav-text">CNN样例3 DeepPose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN样例4_CNN_vs_人工特征"><span class="nav-number">3.7.</span> <span class="nav-text">CNN样例4 CNN vs 人工特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2016
+  
+  <span class="author"> Zhang Liliang</span>
+</div>
+
+<div class="powered-by">
+  <div style="float:left;margin-top:7px;margin-right:10px;">
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254711542'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254711542%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+   鲁ICP备15013969号
+</div>
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a> 
+</div>
+
+<div class="theme-info">
+  Clone theme 
+  <a class="theme-link" href="https://github.com/xirong/hexo-theme-next" rel="external nofollow">
+    NexT
+  </a>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <!-- <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script> -->
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <!-- <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|micromessenger|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|UCBrowser|MQQBrowser|Blazer|PSP|IEMobile|Symbian|Mobile|samsung|htc/g;
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+
+</script>
+ -->
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebarToggleMotion();
+    postsListMotion();
+    backToTopMotion();    
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+//search animate
+$(function(){
+   $('#ts-search-input').focus(function() {  //设置获得焦点时的方法，让文本框变长
+    $(this).animate({width: "150"}, 300 );  
+    $(this).val(''); //用于清空内容，可选操作
+   });
+ 
+   $('#ts-search-input').blur(function() {  //设置失去焦点时的方法，让文本框变短
+    $(this).animate({width: "70"}, 300 );
+   });
+});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
+        { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebarToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+
+
+
+   <script type="text/javascript">
+    var HEXO_SIDEBAR_CONFIGURATION = 'post';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhangliliang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?4dd9fbea330c98acc0ff7b6538270f3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  
+</body>
+</html>
