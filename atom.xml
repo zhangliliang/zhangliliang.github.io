@@ -4,7 +4,7 @@
   <subtitle><![CDATA[保持前行，不忘初心。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://zhangliliang.com/"/>
-  <updated>2016-04-05T13:52:09.342Z</updated>
+  <updated>2016-07-03T12:01:05.725Z</updated>
   <id>http://zhangliliang.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://zhangliliang.com/2016/04/05/paper-note-hypernet/"/>
     <id>http://zhangliliang.com/2016/04/05/paper-note-hypernet/</id>
     <published>2016-04-05T13:02:05.000Z</published>
-    <updated>2016-04-05T13:52:09.342Z</updated>
+    <updated>2016-07-03T12:01:05.725Z</updated>
     <content type="html"><![CDATA[<p>论文出处是CVPR2016的Spotlight，目前只有arxiv版本：<a href="http://arxiv.org/pdf/1604.00600.pdf" target="_blank" rel="external">http://arxiv.org/pdf/1604.00600.pdf</a></p>
 <h2 id="概述">概述</h2><p>文章做的问题是通用物体检测，基本框架如下图所示：<br><img src="http://7j1yz3.com1.z0.glb.clouddn.com/小Q截图-20160405210704.png" alt=""></p>
 <p>基本可以理解成基于Faster R-CNN做了一些改进。</p>
